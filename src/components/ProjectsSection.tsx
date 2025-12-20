@@ -7,24 +7,10 @@ import projectIndustrial from "@/assets/project-industrial.jpg";
 const projects = [
   {
     image: projectHighway,
-    title: "NH-48 Highway Extension",
-    location: "Delhi-Jaipur Highway",
+    title: "Jhunjhunu to Rajgarh, Neem Ka Thana to Khetri",
+    location: "Rajasthan",
     category: "Highway Construction",
-    value: "₹450 Cr",
-  },
-  {
-    image: projectCommercial,
-    title: "Agroha Business Park",
-    location: "Gurugram, Haryana",
-    category: "Commercial Complex",
-    value: "₹280 Cr",
-  },
-  {
-    image: projectIndustrial,
-    title: "Logistics Hub Phase II",
-    location: "Manesar, Haryana",
-    category: "Industrial Facility",
-    value: "₹175 Cr",
+    client: "Rajasthan PWD",
   },
 ];
 
@@ -78,14 +64,16 @@ export const ProjectsSection = () => {
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <div className="flex items-center gap-2 text-gold text-sm font-medium mb-2">
                   <span className="px-2 py-1 bg-gold/20 rounded">{project.category}</span>
-                  <span className="ml-auto">{project.value}</span>
                 </div>
                 <h3 className="text-xl font-bold text-primary-foreground mb-2 group-hover:text-gold transition-colors">
                   {project.title}
                 </h3>
-                <div className="flex items-center gap-2 text-primary-foreground/70 text-sm">
+                <div className="flex items-center gap-2 text-primary-foreground/70 text-sm mb-1">
                   <MapPin className="h-4 w-4" />
                   {project.location}
+                </div>
+                <div className="text-primary-foreground/70 text-sm">
+                  Client: {project.client}
                 </div>
               </div>
 

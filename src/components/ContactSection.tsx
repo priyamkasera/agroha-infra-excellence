@@ -7,23 +7,18 @@ import { useToast } from "@/hooks/use-toast";
 const contactInfo = [
   {
     icon: MapPin,
-    title: "Head Office",
-    details: ["Sector 44, Gurugram", "Haryana 122003, India"],
-  },
-  {
-    icon: Phone,
-    title: "Phone",
-    details: ["+91 98765 43210", "+91 11 4567 8900"],
+    title: "Office Address",
+    details: ["191/380, Near Janki Devi Public School", "Sector 19, Pratap Nagar, Jaipur – 302033"],
   },
   {
     icon: Mail,
     title: "Email",
-    details: ["info@agrohainfra.com", "projects@agrohainfra.com"],
+    details: ["info@agrohainfra.com"],
   },
   {
     icon: Clock,
     title: "Working Hours",
-    details: ["Mon - Sat: 9:00 AM - 6:00 PM", "Sunday: Closed"],
+    details: ["Monday to Saturday: 10:00 AM – 6:00 PM", "Sunday: Holiday"],
   },
 ];
 
