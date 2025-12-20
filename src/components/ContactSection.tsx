@@ -11,6 +11,11 @@ const contactInfo = [
     details: ["191/380, Near Janki Devi Public School", "Sector 19, Pratap Nagar, Jaipur – 302033"],
   },
   {
+    icon: Phone,
+    title: "Phone",
+    details: ["+91 9313547809"],
+  },
+  {
     icon: Mail,
     title: "Email",
     details: ["info@agrohainfra.com"],
