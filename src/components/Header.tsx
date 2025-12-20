@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import agrohaLogo from "@/assets/agroha-logo.jpg";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -20,9 +21,9 @@ export const Header = () => {
       <div className="bg-navy-dark text-primary-foreground py-2 hidden md:block">
         <div className="container-custom px-4 flex justify-between items-center text-sm">
           <div className="flex items-center gap-6">
-            <a href="tel:+919876543210" className="flex items-center gap-2 hover:text-gold transition-colors">
+            <a href="tel:+919313547809" className="flex items-center gap-2 hover:text-gold transition-colors">
               <Phone className="h-4 w-4" />
-              +91 98765 43210
+              +91 9313547809
             </a>
             <a href="mailto:info@agrohainfra.com" className="flex items-center gap-2 hover:text-gold transition-colors">
               <Mail className="h-4 w-4" />
@@ -41,16 +42,7 @@ export const Header = () => {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <a href="#home" className="flex items-center gap-3">
-              <div className="relative">
-                <div className="w-12 h-12 bg-gradient-hero rounded-lg flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-xl">A</span>
-                </div>
-                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-gold rounded-sm"></div>
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-foreground tracking-tight">AGROHA</h1>
-                <p className="text-xs text-muted-foreground uppercase tracking-widest">Infrastructure</p>
-              </div>
+              <img src={agrohaLogo} alt="Agroha Infrastructure Logo" className="h-14 w-auto object-contain" />
             </a>
 
             {/* Desktop Navigation */}
