@@ -39,9 +39,17 @@ export const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Format message for WhatsApp
+    const whatsappMessage = `*New Contact Form Message*%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Phone:* ${formData.phone || 'Not provided'}%0A*Subject:* ${formData.subject}%0A%0A*Message:*%0A${formData.message}`;
+    
+    // Open WhatsApp with pre-filled message
+    const whatsappUrl = `https://wa.me/919313547809?text=${whatsappMessage}`;
+    window.open(whatsappUrl, '_blank');
+    
     toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you soon.",
+      title: "Opening WhatsApp",
+      description: "Complete sending your message on WhatsApp.",
     });
     setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
   };
@@ -89,9 +97,19 @@ export const ContactSection = () => {
                   <div>
                     <h4 className="font-bold text-foreground mb-2">{item.title}</h4>
                     {item.details.map((detail, index) => (
-                      <p key={index} className="text-muted-foreground text-sm">
-                        {detail}
-                      </p>
+                      item.title === "Phone" ? (
+                        <a key={index} href={`tel:${detail.replace(/\s/g, '')}`} className="text-muted-foreground text-sm hover:text-gold transition-colors block">
+                          {detail}
+                        </a>
+                      ) : item.title === "Email" ? (
+                        <a key={index} href={`mailto:${detail}`} className="text-muted-foreground text-sm hover:text-gold transition-colors block">
+                          {detail}
+                        </a>
+                      ) : (
+                        <p key={index} className="text-muted-foreground text-sm">
+                          {detail}
+                        </p>
+                      )
                     ))}
                   </div>
                 </div>

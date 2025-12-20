@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { CheckCircle, Target, Eye } from "lucide-react";
-import founderImage from "@/assets/founder-portrait.jpg";
+import ownerImage from "@/assets/owner-portrait.jpg";
 
 const highlights = [
   "ISO 9001:2015 Certified",
@@ -92,9 +92,9 @@ export const AboutSection = () => {
               <div className="relative bg-card rounded-2xl overflow-hidden shadow-card">
                 <div className="aspect-[4/5] overflow-hidden">
                   <img
-                    src={founderImage}
+                    src={ownerImage}
                     alt="Mr. Mukesh Gupta - Founder & Chairman"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-navy-dark via-navy-dark/90 to-transparent p-6">
