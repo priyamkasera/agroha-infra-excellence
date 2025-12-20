@@ -65,11 +65,19 @@ export const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <Button variant="hero" size="xl">
+            <Button 
+              variant="hero" 
+              size="xl"
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               Explore Projects
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button variant="hero-outline" size="xl">
+            <Button 
+              variant="hero-outline" 
+              size="xl"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               Contact Us
             </Button>
           </motion.div>
