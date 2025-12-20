@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { CheckCircle, Target, Eye } from "lucide-react";
 import ownerImage from "@/assets/owner-portrait.jpg";
-import agrohaLogo from "@/assets/agroha-logo.jpg";
 
 const highlights = [
   "ISO 9001:2015 Certified",
@@ -82,38 +81,21 @@ export const AboutSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative"
+            className="flex flex-col items-center"
           >
-            <div className="relative">
-              {/* Background Decoration */}
-              <div className="absolute -top-6 -right-6 w-full h-full bg-gold/20 rounded-2xl"></div>
-              <div className="absolute -bottom-6 -left-6 w-full h-full border-2 border-navy rounded-2xl"></div>
-              
-          {/* Main Card */}
-              <div className="relative bg-card rounded-2xl overflow-hidden shadow-card">
-                {/* Logo overlay */}
-                <div className="absolute top-4 right-4 z-10">
-                  <img
-                    src={agrohaLogo}
-                    alt="Agroha Infrastructure Logo"
-                    className="h-16 w-auto object-contain bg-white/90 rounded-lg p-2 shadow-md"
-                  />
-                </div>
-                <div className="aspect-square overflow-hidden bg-white flex items-center justify-center">
-                  <img
-                    src={ownerImage}
-                    alt="Mr. Mukesh Gupta - Founder & Chairman"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-navy-dark via-navy-dark/90 to-transparent p-6">
-                  <h3 className="text-2xl font-bold text-primary-foreground">Mr. Mukesh Gupta</h3>
-                  <p className="text-gold font-medium">Founder & Chairman</p>
-                  <p className="text-primary-foreground/70 text-sm mt-2">
-                    "Our commitment to quality and client satisfaction has been the cornerstone of Agroha's success."
-                  </p>
-                </div>
-              </div>
+            <div className="bg-white rounded-2xl overflow-hidden shadow-card">
+              <img
+                src={ownerImage}
+                alt="Mr. Mukesh Gupta - Founder & Chairman"
+                className="w-full max-w-md object-contain"
+              />
+            </div>
+            <div className="text-center mt-6">
+              <h3 className="text-2xl font-bold text-foreground">Mr. Mukesh Gupta</h3>
+              <p className="text-gold font-medium">Founder & Chairman</p>
+              <p className="text-muted-foreground text-sm mt-2 max-w-md italic">
+                "Our commitment to quality and client satisfaction has been the cornerstone of Agroha's success."
+              </p>
             </div>
           </motion.div>
         </div>
