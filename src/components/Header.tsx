@@ -21,9 +21,9 @@ export const Header = () => {
       <div className="bg-navy-dark text-primary-foreground py-2 hidden md:block">
         <div className="container-custom px-4 flex justify-between items-center text-sm">
           <div className="flex items-center gap-6">
-            <a href="tel:+919313547809" className="flex items-center gap-2 hover:text-gold transition-colors">
+            <a href="tel:01413162093" className="flex items-center gap-2 hover:text-gold transition-colors">
               <Phone className="h-4 w-4" />
-              +91 9313547809
+              0141-3162093
             </a>
             <a href="mailto:info@agrohainfra.com" className="flex items-center gap-2 hover:text-gold transition-colors">
               <Mail className="h-4 w-4" />
