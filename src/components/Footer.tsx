@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Linkedin, Facebook, Twitter, Instagram } from "lucide-react";
+import { Phone, Mail, MapPin, Linkedin } from "lucide-react";
 
 const quickLinks = [
   { name: "About Us", href: "#about" },
@@ -16,9 +16,6 @@ const services = [
 
 const socialLinks = [
   { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Instagram, href: "#", label: "Instagram" },
 ];
 
 export const Footer = () => {
@@ -42,7 +39,7 @@ export const Footer = () => {
             </div>
             <p className="text-primary-foreground/70 mb-6 leading-relaxed">
               Building India's infrastructure with excellence, innovation, and commitment 
-              to quality since 2004.
+              to quality since 2025.
             </p>
             <div className="flex items-center gap-4">
               {socialLinks.map((social) => (
@@ -103,7 +100,7 @@ export const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-gold flex-shrink-0 mt-0.5" />
                 <span className="text-primary-foreground/70">
-                  Sector 44, Gurugram<br />Haryana 122003, India
+                  191/380, Near Janki Devi Public School<br />Sector 19, Pratap Nagar, Jaipur – 302033
                 </span>
               </li>
               <li className="flex items-center gap-3">
