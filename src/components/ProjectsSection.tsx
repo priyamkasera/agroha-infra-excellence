@@ -1,8 +1,14 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, MapPin } from "lucide-react";
+import { ArrowUpRight, MapPin, X } from "lucide-react";
 import projectHighway from "@/assets/project-highway.jpg";
-import projectCommercial from "@/assets/project-commercial.jpg";
-import projectIndustrial from "@/assets/project-industrial.jpg";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 const projects = [
   {
@@ -11,10 +17,19 @@ const projects = [
     location: "Rajasthan",
     category: "Highway Construction",
     client: "Rajasthan PWD",
+    fullDescription: `Independent Engineer Services for Operation/Maintenance of:
+
+(i) Neem Ka Thana – Khetri Section of SH-13 from km 55+300 (at Junction with SH-43 B - Village Sirohi) to km 102+450 (at Junction with NH 311 at Jasrapur Mod near Khetri), total length 45.850 km
+
+(ii) Jhunjhunu – Rajgarh Section of SH-41 from km 49+750 to 83+000 in Jhunjhunu district and 28+000 to 0+000 (Ch 0/0 at Rajgarh) in Churu district, total Length 62.730 km
+
+in the State of Rajasthan under Hybrid Annuity Mode`,
   },
 ];
 
 export const ProjectsSection = () => {
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+
   return (
     <section id="projects" className="section-padding bg-navy-dark">
       <div className="container-custom">
@@ -47,7 +62,8 @@ export const ProjectsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative rounded-xl overflow-hidden"
+              className="group relative rounded-xl overflow-hidden cursor-pointer"
+              onClick={() => setSelectedProject(project)}
             >
               <div className="aspect-[4/5] overflow-hidden">
                 <img
@@ -75,6 +91,9 @@ export const ProjectsSection = () => {
                 <div className="text-primary-foreground/70 text-sm">
                   Client: {project.client}
                 </div>
+                <p className="text-primary-foreground/50 text-xs mt-2">
+                  Click for details
+                </p>
               </div>
 
               {/* Hover Arrow */}
@@ -99,6 +118,39 @@ export const ProjectsSection = () => {
           </button>
         </motion.div>
       </div>
+
+      {/* Project Details Dialog */}
+      <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
+        <DialogContent className="max-w-2xl bg-card">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-foreground">
+              {selectedProject?.title}
+            </DialogTitle>
+            <DialogDescription className="text-muted-foreground">
+              {selectedProject?.category} • {selectedProject?.location}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="mt-4">
+            <img
+              src={selectedProject?.image}
+              alt={selectedProject?.title}
+              className="w-full h-48 object-cover rounded-lg mb-4"
+            />
+            <div className="space-y-4">
+              <div>
+                <h4 className="font-semibold text-foreground mb-2">Project Details</h4>
+                <p className="text-muted-foreground whitespace-pre-line leading-relaxed">
+                  {selectedProject?.fullDescription}
+                </p>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <span className="font-medium text-foreground">Client:</span>
+                <span className="text-muted-foreground">{selectedProject?.client}</span>
+              </div>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

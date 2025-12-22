@@ -2,11 +2,17 @@ import { motion } from "framer-motion";
 import { CheckCircle, Target, Eye } from "lucide-react";
 import ownerImage from "@/assets/owner-portrait.jpg";
 
+const companyInfo = {
+  crn: "U42204RJ2024PTC096168",
+  pan: "ABBCA0780E",
+  gst: "08ABBCA0780E1Z0",
+};
+
 const highlights = [
-  "ISO 9001:2015 Certified",
-  "Government Approved Contractor",
+  "CRN: U42204RJ2024PTC096168",
+  "PAN: ABBCA0780E",
+  "GST: 08ABBCA0780E1Z0",
   "Pan India Operations",
-  "Safety First Approach",
   "Sustainable Practices",
   "On-Time Delivery",
 ];
@@ -31,15 +37,16 @@ export const AboutSection = () => {
               <span className="text-gold"> Infrastructure Development</span>
             </h2>
             <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-              Agroha Infrastructure, under the visionary leadership of <strong className="text-foreground">Mr. Mukesh Gupta</strong>, 
-              has established itself as a premier construction and infrastructure development company in India. 
-              With over 20 years of experience, we specialize in delivering world-class infrastructure 
-              projects that drive economic growth and improve lives.
+              AGROHA Infrastructure Consulting Engineers Pvt. Ltd. (AICEPL) is a Civil Engineering multi-disciplinary 
+              consultancy organization with the aim of participating in the infrastructure development of the Nation 
+              by providing professional engineering services. The firm is structured to fulfill the specific needs of 
+              National programmes related to public utilities, community services, and industrial facilities and infrastructure projects.
             </p>
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              Our expertise spans across highway construction, commercial developments, industrial 
-              facilities, and urban infrastructure projects. We work alongside Sterling Indo Tech, 
-              sharing resources and expertise to deliver comprehensive solutions to our clients.
+              Our team consists of specialists in design, project preparation, documentation, survey, geo-tech investigations 
+              in roads and bridges projects, construction management, quality control, and expertise in financial and economic 
+              analysis for highway & bridge works. We also have experts in Architecture & Town Planning, Water Resources and 
+              Irrigation, Sewerage and Water Supply.
             </p>
 
             {/* Highlights Grid */}
