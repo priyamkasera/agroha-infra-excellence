@@ -1,36 +1,46 @@
 import { motion } from "framer-motion";
-import { Building2, Route, Factory, Home, Wrench, HardHat } from "lucide-react";
+import { Building2, FileSearch, FileText, Compass, Search, HardHat, FileCheck, TrainTrack } from "lucide-react";
 
 const services = [
   {
-    icon: Route,
-    title: "Highway Construction",
-    description: "State-of-the-art highway and expressway construction with modern engineering techniques and durable materials.",
+    icon: FileSearch,
+    title: "Feasibility Studies",
+    description: "Comprehensive feasibility analysis and viability assessments for infrastructure projects.",
   },
   {
-    icon: Building2,
-    title: "Commercial Buildings",
-    description: "Design and construction of commercial complexes, office spaces, and retail infrastructure with premium finishes.",
+    icon: FileText,
+    title: "DPR Preparation",
+    description: "Detailed Project Report preparation with thorough technical and financial analysis.",
   },
   {
-    icon: Factory,
-    title: "Industrial Facilities",
-    description: "Specialized industrial construction including warehouses, manufacturing plants, and logistics centers.",
+    icon: Compass,
+    title: "Engineering Design",
+    description: "Innovative engineering design solutions for highways, bridges, tunnels, and metro systems.",
   },
   {
-    icon: Home,
-    title: "Residential Projects",
-    description: "Quality residential developments from individual homes to large-scale housing societies.",
-  },
-  {
-    icon: Wrench,
-    title: "Infrastructure Development",
-    description: "Bridges, flyovers, underpasses, and urban infrastructure projects that connect communities.",
+    icon: Search,
+    title: "Survey & Investigation",
+    description: "Geotechnical, topographical, and environmental surveys with advanced investigation techniques.",
   },
   {
     icon: HardHat,
-    title: "Project Management",
+    title: "Project Management Consultancy",
     description: "End-to-end project management services ensuring timely delivery and cost optimization.",
+  },
+  {
+    icon: Building2,
+    title: "Construction Supervision",
+    description: "Quality assurance and construction supervision to ensure projects meet highest standards.",
+  },
+  {
+    icon: FileCheck,
+    title: "Tendering & Contract Services",
+    description: "Complete tendering support and contract management for infrastructure projects.",
+  },
+  {
+    icon: TrainTrack,
+    title: "Tunnel & Metro",
+    description: "Specialized consultancy for tunnel engineering and metro rail infrastructure projects.",
   },
 ];
 
