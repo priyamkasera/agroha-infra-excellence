@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, MapPin, X } from "lucide-react";
-import projectHighway from "@/assets/project-highway.jpg";
+import { ArrowUpRight, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
+import jhunjhunu1 from "@/assets/jhunjhunu-1.png";
+import jhunjhunu2 from "@/assets/jhunjhunu-2.png";
+import jhunjhunu3 from "@/assets/jhunjhunu-3.png";
+import jhunjhunu4 from "@/assets/jhunjhunu-4.png";
+import jhunjhunu5 from "@/assets/jhunjhunu-5.png";
+import jhunjhunu6 from "@/assets/jhunjhunu-6.png";
 import {
   Dialog,
   DialogContent,
@@ -12,11 +17,21 @@ import {
 
 const projects = [
   {
-    image: projectHighway,
+    images: [jhunjhunu1, jhunjhunu2, jhunjhunu3, jhunjhunu4, jhunjhunu5, jhunjhunu6],
     title: "Jhunjhunu to Rajgarh, Neem Ka Thana to Khetri",
     location: "Rajasthan",
     category: "Highway Construction",
     client: "Rajasthan PWD",
+    partners: [
+      "Lion Engineering Consultants Pvt. Ltd",
+      "Theme Engineering Services Pvt. Ltd.",
+      "Renardet S.A.",
+      "Geo Design & Research Pvt. Ltd.",
+      "TPF GETINSA EUROESTUDIOS",
+      "MARS CONSULTANCY PVT LTD",
+      "ISAN Corporation"
+    ],
+    sectors: ["Highways", "Railways", "Airports", "Irrigation & Water Resources", "Environmental Engineering", "Urban Infrastructure", "Project Management Consultancy"],
     fullDescription: `Independent Engineer Services for Operation/Maintenance of:
 
 (i) Neem Ka Thana – Khetri Section of SH-13 from km 55+300 (at Junction with SH-43 B - Village Sirohi) to km 102+450 (at Junction with NH 311 at Jasrapur Mod near Khetri), total length 45.850 km
@@ -29,6 +44,26 @@ in the State of Rajasthan under Hybrid Annuity Mode`,
 
 export const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = () => {
+    if (selectedProject) {
+      setCurrentImageIndex((prev) => (prev + 1) % selectedProject.images.length);
+    }
+  };
+
+  const prevImage = () => {
+    if (selectedProject) {
+      setCurrentImageIndex((prev) => (prev - 1 + selectedProject.images.length) % selectedProject.images.length);
+    }
+  };
+
+  const handleOpenChange = (open: boolean) => {
+    if (!open) {
+      setSelectedProject(null);
+      setCurrentImageIndex(0);
+    }
+  };
 
   return (
     <section id="projects" className="section-padding bg-navy-dark">
@@ -63,11 +98,14 @@ export const ProjectsSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group relative rounded-xl overflow-hidden cursor-pointer"
-              onClick={() => setSelectedProject(project)}
+              onClick={() => {
+                setSelectedProject(project);
+                setCurrentImageIndex(0);
+              }}
             >
               <div className="aspect-[4/5] overflow-hidden">
                 <img
-                  src={project.image}
+                  src={project.images[0]}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
@@ -120,10 +158,10 @@ export const ProjectsSection = () => {
       </div>
 
       {/* Project Details Dialog */}
-      <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-        <DialogContent className="max-w-2xl bg-card">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-foreground">
+      <Dialog open={!!selectedProject} onOpenChange={handleOpenChange}>
+        <DialogContent className="max-w-2xl bg-card max-h-[90vh] overflow-y-auto">
+          <DialogHeader className="pr-10">
+            <DialogTitle className="text-xl md:text-2xl font-bold text-foreground">
               {selectedProject?.title}
             </DialogTitle>
             <DialogDescription className="text-muted-foreground">
@@ -131,15 +169,45 @@ export const ProjectsSection = () => {
             </DialogDescription>
           </DialogHeader>
           <div className="mt-4">
-            <img
-              src={selectedProject?.image}
-              alt={selectedProject?.title}
-              className="w-full h-48 object-cover rounded-lg mb-4"
-            />
+            {/* Image Carousel */}
+            <div className="relative">
+              <img
+                src={selectedProject?.images[currentImageIndex]}
+                alt={`${selectedProject?.title} - Image ${currentImageIndex + 1}`}
+                className="w-full h-48 md:h-64 object-cover rounded-lg mb-4"
+              />
+              {selectedProject && selectedProject.images.length > 1 && (
+                <>
+                  <button
+                    onClick={prevImage}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-background/80 rounded-full flex items-center justify-center hover:bg-background transition-colors"
+                  >
+                    <ChevronLeft className="h-5 w-5" />
+                  </button>
+                  <button
+                    onClick={nextImage}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-background/80 rounded-full flex items-center justify-center hover:bg-background transition-colors"
+                  >
+                    <ChevronRight className="h-5 w-5" />
+                  </button>
+                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-1">
+                    {selectedProject.images.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setCurrentImageIndex(idx)}
+                        className={`w-2 h-2 rounded-full transition-colors ${
+                          idx === currentImageIndex ? 'bg-gold' : 'bg-background/50'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
             <div className="space-y-4">
               <div>
                 <h4 className="font-semibold text-foreground mb-2">Project Details</h4>
-                <p className="text-muted-foreground whitespace-pre-line leading-relaxed">
+                <p className="text-muted-foreground whitespace-pre-line leading-relaxed text-sm md:text-base">
                   {selectedProject?.fullDescription}
                 </p>
               </div>
@@ -147,6 +215,30 @@ export const ProjectsSection = () => {
                 <span className="font-medium text-foreground">Client:</span>
                 <span className="text-muted-foreground">{selectedProject?.client}</span>
               </div>
+              {selectedProject?.partners && (
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">Partners</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.partners.map((partner) => (
+                      <span key={partner} className="px-2 py-1 bg-muted text-muted-foreground text-xs rounded">
+                        {partner}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {selectedProject?.sectors && (
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">Sectors</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.sectors.map((sector) => (
+                      <span key={sector} className="px-2 py-1 bg-gold/20 text-gold text-xs rounded">
+                        {sector}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </DialogContent>
