@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Building2, FileSearch, FileText, Compass, Search, HardHat, FileCheck, TrainTrack } from "lucide-react";
+import { Building2, FileSearch, FileText, Compass, Search, HardHat, FileCheck, TrainTrack, Mountain } from "lucide-react";
 
 const services = [
   {
@@ -43,7 +43,7 @@ const services = [
     description: "Specialized consultancy for metro rail infrastructure, stations, and urban transit systems.",
   },
   {
-    icon: HardHat,
+    icon: Mountain,
     title: "Tunnel Engineering",
     description: "Expert tunnel design and engineering for highways, railways, and underground infrastructure.",
   },
