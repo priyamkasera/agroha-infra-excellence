@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { CheckCircle, Target, Eye } from "lucide-react";
-import ownerImage from "@/assets/owner-portrait.jpg";
+import founderImage from "@/assets/founder-suresh.jpg";
 
 const companyInfo = {
   crn: "U42204RJ2024PTC096168",
@@ -92,13 +92,13 @@ export const AboutSection = () => {
           >
             <div className="bg-white rounded-2xl overflow-hidden shadow-card">
               <img
-                src={ownerImage}
-                alt="Mr. Mukesh Gupta - Founder & Chairman"
+                src={founderImage}
+                alt="Mr. Suresh Gupta - Founder & Chairman"
                 className="w-full max-w-md object-contain"
               />
             </div>
             <div className="text-center mt-6">
-              <h3 className="text-2xl font-bold text-foreground">Mr. Mukesh Gupta</h3>
+              <h3 className="text-2xl font-bold text-foreground">Mr. Suresh Gupta</h3>
               <p className="text-gold font-medium">Founder & Chairman</p>
               <p className="text-muted-foreground text-sm mt-2 max-w-md italic">
                 "Our commitment to quality and client satisfaction has been the cornerstone of Agroha's success."
