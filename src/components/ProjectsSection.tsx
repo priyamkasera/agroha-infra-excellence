@@ -7,6 +7,9 @@ import jhunjhunu3 from "@/assets/jhunjhunu-3.png";
 import jhunjhunu4 from "@/assets/jhunjhunu-4.png";
 import jhunjhunu5 from "@/assets/jhunjhunu-5.png";
 import jhunjhunu6 from "@/assets/jhunjhunu-6.png";
+import jhunjhunu7 from "@/assets/jhunjhunu-7.png";
+import jhunjhunu8 from "@/assets/jhunjhunu-8.png";
+import jhunjhunu9 from "@/assets/jhunjhunu-9.png";
 import {
   Dialog,
   DialogContent,
@@ -17,7 +20,7 @@ import {
 
 const projects = [
   {
-    images: [jhunjhunu1, jhunjhunu2, jhunjhunu3, jhunjhunu4, jhunjhunu5, jhunjhunu6],
+    images: [jhunjhunu7, jhunjhunu8, jhunjhunu9, jhunjhunu1, jhunjhunu2, jhunjhunu3, jhunjhunu4, jhunjhunu5, jhunjhunu6],
     title: "Jhunjhunu to Rajgarh, Neem Ka Thana to Khetri",
     location: "Rajasthan",
     category: "Highway Construction",
