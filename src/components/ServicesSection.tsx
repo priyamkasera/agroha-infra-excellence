@@ -39,8 +39,13 @@ const services = [
   },
   {
     icon: TrainTrack,
-    title: "Tunnel & Metro",
-    description: "Specialized consultancy for tunnel engineering and metro rail infrastructure projects.",
+    title: "Metro Rail",
+    description: "Specialized consultancy for metro rail infrastructure, stations, and urban transit systems.",
+  },
+  {
+    icon: HardHat,
+    title: "Tunnel Engineering",
+    description: "Expert tunnel design and engineering for highways, railways, and underground infrastructure.",
   },
 ];
 
