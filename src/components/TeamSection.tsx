@@ -191,7 +191,7 @@ export const TeamSection = () => {
           </div>
         </div>
 
-        {/* HR, Business Development & IT Team */}
+        {/* Operation Team */}
         <div>
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
@@ -199,7 +199,7 @@ export const TeamSection = () => {
             viewport={{ once: true }}
             className="text-2xl font-bold text-foreground mb-8 text-center"
           >
-            HR, Business Development & IT Team
+            Operation Team
           </motion.h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {hrBusinessTeam.map((member, index) => (
