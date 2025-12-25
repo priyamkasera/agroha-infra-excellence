@@ -1,7 +1,38 @@
-import { motion } from "framer-motion";
-import { ArrowRight, Award, Users, Building2 } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Award, Users, Building2, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-construction.jpg";
+import jhunjhunu1 from "@/assets/jhunjhunu-1.png";
+import jhunjhunu2 from "@/assets/jhunjhunu-2.png";
+import jhunjhunu3 from "@/assets/jhunjhunu-3.png";
+
+const slides = [
+  {
+    image: heroImage,
+    title: "Building India's",
+    highlight: "Infrastructure Legacy",
+    description: "Agroha Infrastructure delivers world-class construction solutions for highways, commercial complexes, industrial facilities, and urban development projects across India.",
+  },
+  {
+    image: jhunjhunu1,
+    title: "Excellence in",
+    highlight: "Highway Construction",
+    description: "Specialized in building state-of-the-art highways and expressways that connect communities and drive economic growth.",
+  },
+  {
+    image: jhunjhunu2,
+    title: "Trusted Partner for",
+    highlight: "Infrastructure Development",
+    description: "From concept to completion, we deliver projects that stand the test of time with uncompromising quality standards.",
+  },
+  {
+    image: jhunjhunu3,
+    title: "Pioneering",
+    highlight: "Modern Construction",
+    description: "Leveraging cutting-edge technology and innovative methods to build tomorrow's infrastructure today.",
+  },
+];
 
 const stats = [
   { icon: Building2, value: "250+", label: "Projects Completed" },
@@ -10,20 +41,79 @@ const stats = [
 ];
 
 export const HeroSection = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
   return (
     <section id="home" className="relative min-h-[90vh] flex items-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <img
-          src={heroImage}
-          alt="Agroha Infrastructure Construction Site"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-overlay"></div>
-      </div>
+      {/* Background Slideshow */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentSlide}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.7 }}
+          className="absolute inset-0"
+        >
+          <img
+            src={slides[currentSlide].image}
+            alt="Agroha Infrastructure"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-overlay"></div>
+        </motion.div>
+      </AnimatePresence>
 
       {/* Geometric Pattern Overlay */}
       <div className="absolute inset-0 geometric-pattern opacity-30"></div>
+
+      {/* Navigation Arrows */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 bg-primary-foreground/10 hover:bg-primary-foreground/20 backdrop-blur-sm border border-primary-foreground/20 rounded-full transition-colors"
+      >
+        <ChevronLeft className="h-6 w-6 text-primary-foreground" />
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 bg-primary-foreground/10 hover:bg-primary-foreground/20 backdrop-blur-sm border border-primary-foreground/20 rounded-full transition-colors"
+      >
+        <ChevronRight className="h-6 w-6 text-primary-foreground" />
+      </button>
+
+      {/* Slide Indicators */}
+      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`w-3 h-3 rounded-full transition-all ${
+              currentSlide === index
+                ? "bg-gold w-8"
+                : "bg-primary-foreground/40 hover:bg-primary-foreground/60"
+            }`}
+          />
+        ))}
+      </div>
 
       {/* Content */}
       <div className="relative z-10 container-custom px-4 py-20">
@@ -38,26 +128,24 @@ export const HeroSection = () => {
             </span>
           </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6"
-          >
-            Building India's
-            <span className="block text-gold">Infrastructure Legacy</span>
-          </motion.h1>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+            >
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6">
+                {slides[currentSlide].title}
+                <span className="block text-gold">{slides[currentSlide].highlight}</span>
+              </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-primary-foreground/80 mb-8 max-w-2xl"
-          >
-            Agroha Infrastructure delivers world-class construction solutions for highways, 
-            commercial complexes, industrial facilities, and urban development projects 
-            across India.
-          </motion.p>
+              <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 max-w-2xl">
+                {slides[currentSlide].description}
+              </p>
+            </motion.div>
+          </AnimatePresence>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
