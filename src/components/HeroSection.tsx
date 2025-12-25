@@ -2,35 +2,35 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Award, Users, Building2, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-construction.jpg";
-import jhunjhunu1 from "@/assets/jhunjhunu-1.png";
-import jhunjhunu2 from "@/assets/jhunjhunu-2.png";
-import jhunjhunu3 from "@/assets/jhunjhunu-3.png";
+import heroSlide1 from "@/assets/hero-slide-1.jpg";
+import heroSlide2 from "@/assets/hero-slide-2.jpg";
+import heroSlide3 from "@/assets/hero-slide-3.jpg";
+import heroSlide4 from "@/assets/hero-slide-4.jpg";
 
 const slides = [
   {
-    image: heroImage,
+    image: heroSlide1,
     title: "Building India's",
     highlight: "Infrastructure Legacy",
     description: "Agroha Infrastructure delivers world-class construction solutions for highways, commercial complexes, industrial facilities, and urban development projects across India.",
   },
   {
-    image: jhunjhunu1,
+    image: heroSlide2,
     title: "Excellence in",
-    highlight: "Highway Construction",
-    description: "Specialized in building state-of-the-art highways and expressways that connect communities and drive economic growth.",
+    highlight: "Bridge Construction",
+    description: "Specialized in building state-of-the-art bridges and flyovers that connect communities and drive economic growth.",
   },
   {
-    image: jhunjhunu2,
-    title: "Trusted Partner for",
-    highlight: "Infrastructure Development",
-    description: "From concept to completion, we deliver projects that stand the test of time with uncompromising quality standards.",
-  },
-  {
-    image: jhunjhunu3,
+    image: heroSlide3,
     title: "Pioneering",
-    highlight: "Modern Construction",
-    description: "Leveraging cutting-edge technology and innovative methods to build tomorrow's infrastructure today.",
+    highlight: "Tunnel Engineering",
+    description: "Advanced tunnel boring and underground infrastructure development for metro rail and highway projects.",
+  },
+  {
+    image: heroSlide4,
+    title: "Trusted Partner for",
+    highlight: "Commercial Development",
+    description: "From concept to completion, we deliver modern commercial complexes that stand the test of time.",
   },
 ];
 
