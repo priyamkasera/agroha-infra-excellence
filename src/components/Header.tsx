@@ -43,7 +43,7 @@ export const Header = () => {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <a href="#home" className="flex items-center gap-3">
-              <img src={agrohaLogo} alt="Agroha Infrastructure Logo" className="h-14 w-auto object-contain" />
+              <img src={agrohaLogo} alt="Agroha Infrastructure Logo" className="h-20 w-auto object-contain" />
             </a>
 
             {/* Desktop Navigation */}
