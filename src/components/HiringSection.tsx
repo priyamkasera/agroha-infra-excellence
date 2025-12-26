@@ -27,7 +27,7 @@ const openPositions = [
 
 export const HiringSection = () => {
   const handleApply = () => {
-    window.location.href = "mailto:HR@agrohainfra.com?subject=Job Application";
+    window.open("https://mail.google.com/mail/?view=cm&to=HR@agrohainfra.com&su=Job%20Application", "_blank");
   };
 
   return (
