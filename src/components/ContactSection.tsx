@@ -13,7 +13,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    details: ["0141-3162093"],
+    details: ["6378072531"],
   },
   {
     icon: Mail,
