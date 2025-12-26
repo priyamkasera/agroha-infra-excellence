@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Linkedin } from "lucide-react";
+import { Phone, Mail, MapPin, Linkedin, Instagram } from "lucide-react";
 
 const quickLinks = [
   { name: "About Us", href: "#about" },
@@ -15,7 +15,8 @@ const services = [
 ];
 
 const socialLinks = [
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/agroha-infrastructure/", label: "LinkedIn" },
+  { icon: Instagram, href: "https://www.instagram.com/agrohainfra?igsh=MXN5OTFrbnd0aHN1cQ==", label: "Instagram" },
 ];
 
 export const Footer = () => {
