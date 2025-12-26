@@ -14,7 +14,7 @@ const leadershipTeam = [
   {
     name: "Mr. Mukesh Gupta",
     role: "Managing Director",
-    description: "Over 20 years of experience in infrastructure services like Highways, Railways, water resources with excellent liaising with MoRT&H, NHAI, State PWDs.",
+    description: "Over 20 years of experience in infrastructure services like Highways, Railways, water resources with excellent coordination with MoRT&H, NHAI, State PWDs.",
     images: [managingDirector],
   },
   {
