@@ -32,33 +32,79 @@ const governmentClients = [
 
 // PSU Clients
 const psuClients = [
-  { name: "RITES Ltd. – Rail India Technical and Economic Service Limited", shortName: "RITES", logo: ritesLogo },
-  { name: "IRCON International Ltd. – Indian Railway Construction International Limited", shortName: "IRCON", logo: irconLogo },
-  { name: "NHIDCL – National Highways & Infrastructure Development Corporation Limited", shortName: "NHIDCL", logo: nhidclLogo },
-  { name: "WAPCOS Ltd. – Water and Power Consultancy Services Limited", shortName: "WAPCOS", logo: wapcosLogo },
-  { name: "NBCC – National Buildings Construction Corporation Limited", shortName: "NBCC", logo: nbccLogo },
-  { name: "DMRC – Delhi Metro Rail Corporation Limited", shortName: "DMRC", logo: dmrcLogo },
+  { name: "RITES Ltd.", shortName: "RITES", logo: ritesLogo },
+  { name: "IRCON International Ltd.", shortName: "IRCON", logo: irconLogo },
+  { name: "NHIDCL", shortName: "NHIDCL", logo: nhidclLogo },
+  { name: "WAPCOS Ltd.", shortName: "WAPCOS", logo: wapcosLogo },
+  { name: "NBCC India Ltd.", shortName: "NBCC", logo: nbccLogo },
+  { name: "Delhi Metro Rail Corporation", shortName: "DMRC", logo: dmrcLogo },
 ];
 
 // International Clients
 const internationalClients = [
-  { name: "World Bank", shortName: "WB", logo: wbLogo },
+  { name: "World Bank", shortName: "World Bank", logo: wbLogo },
   { name: "Asian Development Bank", shortName: "ADB", logo: adbLogo },
   { name: "Japan International Cooperation Agency", shortName: "JICA", logo: jicaLogo },
   { name: "African Development Bank", shortName: "AfDB", logo: afdbLogo },
   { name: "New Development Bank (BRICS)", shortName: "NDB", logo: ndbLogo },
   { name: "United Nations Development Programme", shortName: "UNDP", logo: undpLogo },
-  { name: "KfW Development Bank (Germany)", shortName: "KfW", logo: kfwLogo },
+  { name: "KfW Development Bank", shortName: "KfW", logo: kfwLogo },
   { name: "Agence Française de Développement", shortName: "AFD", logo: afdLogo },
 ];
 
-// Combined clients for slider
-const clients = [...governmentClients, ...psuClients, ...internationalClients];
+interface ClientSliderProps {
+  clients: typeof governmentClients;
+  direction?: "left" | "right";
+  duration?: number;
+}
+
+const ClientSlider = ({ clients, direction = "left", duration = 30 }: ClientSliderProps) => {
+  const duplicatedClients = [...clients, ...clients, ...clients];
+  const totalWidth = 220 * clients.length;
+
+  return (
+    <div className="relative">
+      {/* Gradient Overlays */}
+      <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-navy-dark to-transparent z-10" />
+      <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-navy-dark to-transparent z-10" />
+      
+      <motion.div
+        className="flex gap-5 py-4"
+        animate={{
+          x: direction === "left" ? [0, -totalWidth] : [-totalWidth, 0],
+        }}
+        transition={{
+          x: {
+            repeat: Infinity,
+            repeatType: "loop",
+            duration,
+            ease: "linear",
+          },
+        }}
+      >
+        {duplicatedClients.map((client, index) => (
+          <div
+            key={`${client.shortName}-${index}`}
+            className="flex-shrink-0 w-40 h-24 md:w-48 md:h-28 bg-white rounded-xl border border-border/30 flex flex-col items-center justify-center p-3 hover:border-gold/50 hover:shadow-lg hover:shadow-gold/10 transition-all duration-300 group"
+          >
+            <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mb-1">
+              <img 
+                src={client.logo} 
+                alt={`${client.name} logo`}
+                className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <span className="text-navy-dark text-[10px] md:text-xs text-center font-medium line-clamp-1">
+              {client.shortName}
+            </span>
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+};
 
 export const ClientsSection = () => {
-  // Create a duplicated array for seamless infinite scroll
-  const duplicatedClients = [...clients, ...clients];
-
   return (
     <section id="clients" className="section-padding bg-navy-dark overflow-hidden">
       <div className="container-custom">
@@ -74,7 +120,7 @@ export const ClientsSection = () => {
             OUR CLIENTS
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-            Trusted by <span className="text-gold">Government, PSUs & International Organizations</span>
+            Trusted by <span className="text-gold">Leading Organizations</span>
           </h2>
           <p className="text-primary-foreground/70 text-lg">
             We are proud to serve government bodies, public sector undertakings, 
@@ -82,87 +128,58 @@ export const ClientsSection = () => {
           </p>
         </motion.div>
 
-        {/* Infinite Logo Slider - Row 1 */}
-        <div className="relative">
-          {/* Gradient Overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-navy-dark to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-navy-dark to-transparent z-10" />
-          
-          {/* Sliding Container */}
-          <motion.div
-            className="flex gap-6 py-6"
-            animate={{
-              x: [0, -200 * clients.length],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 40,
-                ease: "linear",
-              },
-            }}
-          >
-            {duplicatedClients.map((client, index) => (
-              <div
-                key={`${client.shortName}-${index}`}
-                className="flex-shrink-0 w-44 h-28 md:w-52 md:h-32 bg-white rounded-xl border border-border/30 flex flex-col items-center justify-center p-3 hover:border-gold/50 hover:shadow-lg hover:shadow-gold/10 transition-all duration-300 group"
-              >
-                <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mb-2">
-                  <img 
-                    src={client.logo} 
-                    alt={`${client.name} logo`}
-                    className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <span className="text-navy-dark text-xs md:text-sm text-center font-medium line-clamp-1">
-                  {client.shortName}
-                </span>
-              </div>
-            ))}
-          </motion.div>
-        </div>
+        {/* Government Clients */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+            <h3 className="text-lg md:text-xl font-semibold text-gold whitespace-nowrap">
+              Government Clients
+            </h3>
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+          </div>
+          <ClientSlider clients={governmentClients} direction="left" duration={25} />
+        </motion.div>
 
-        {/* Second Row - Reverse Direction */}
-        <div className="relative mt-4">
-          {/* Gradient Overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-navy-dark to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-navy-dark to-transparent z-10" />
-          
-          {/* Sliding Container - Reverse */}
-          <motion.div
-            className="flex gap-6 py-6"
-            animate={{
-              x: [-200 * clients.length, 0],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 45,
-                ease: "linear",
-              },
-            }}
-          >
-            {duplicatedClients.map((client, index) => (
-              <div
-                key={`${client.shortName}-reverse-${index}`}
-                className="flex-shrink-0 w-44 h-28 md:w-52 md:h-32 bg-white rounded-xl border border-border/30 flex flex-col items-center justify-center p-3 hover:border-gold/50 hover:shadow-lg hover:shadow-gold/10 transition-all duration-300 group"
-              >
-                <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mb-2">
-                  <img 
-                    src={client.logo} 
-                    alt={`${client.name} logo`}
-                    className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <span className="text-navy-dark text-xs md:text-sm text-center font-medium line-clamp-1">
-                  {client.shortName}
-                </span>
-              </div>
-            ))}
-          </motion.div>
-        </div>
+        {/* PSU Clients */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mb-8"
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+            <h3 className="text-lg md:text-xl font-semibold text-gold whitespace-nowrap">
+              PSU Clients
+            </h3>
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+          </div>
+          <ClientSlider clients={psuClients} direction="right" duration={28} />
+        </motion.div>
+
+        {/* International Clients */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+            <h3 className="text-lg md:text-xl font-semibold text-gold whitespace-nowrap">
+              International Clients
+            </h3>
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+          </div>
+          <ClientSlider clients={internationalClients} direction="left" duration={32} />
+        </motion.div>
       </div>
     </section>
   );
