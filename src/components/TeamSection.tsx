@@ -74,6 +74,11 @@ const hrBusinessTeam = [
     role: "Assistant Manager – Human Resources",
     description: "HR professional managing recruitment, employee relations and administrative functions.",
   },
+  {
+    name: "Mr. Bhavishya Kumar Garg",
+    role: "Assistant Manager",
+    description: "B.Tech in Civil Engineering with expertise in highway design/drawings, DPRs, and Feasibility Studies.",
+  },
 ];
 
 export const TeamSection = () => {
