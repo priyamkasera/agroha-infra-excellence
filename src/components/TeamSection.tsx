@@ -27,51 +27,41 @@ const leadershipTeam = [
 
 const seniorManagement = [
   {
-    name: "Mr. Abhishek",
-    role: "General Manager – Projects",
-    description: "B.Tech in Civil Engineering with 10 years in Highway sector. Experience with MoRT&H and Externally Aided Projects from World Bank, ADB.",
+    name: "Mr. Raunak Gupta",
+    role: "IT Consultant",
+    description: "Technology expert handling IT infrastructure and digital solutions for the organization.",
   },
-  {
-    name: "Mr. A. K. Gupta",
-    role: "General Manager – Projects",
-    description: "M.Tech in Transportation Engineering with 12 years of highway sector experience. Expert in contract execution and quantity surveying.",
-  },
-  {
-    name: "Mr. Ashish Kumar",
-    role: "Deputy General Manager",
-    description: "B.Tech in Civil Engineering with over 10 years in Highway Engineering. Expert in pavement quality standards and materials.",
-  },
-  {
-    name: "Mr. Harinder",
-    role: "Senior Manager",
-    description: "B.Tech in Civil Engineering handling Business Development including bid preparation and coordination with HR for resource mobilization.",
-  },
-  {
-    name: "Mr. Bhavishya Kumar Garg",
-    role: "Manager – Technical",
-    description: "B.Tech in Civil Engineering with expertise in highway design/drawings, DPRs, and Feasibility Studies.",
-  },
-];
-
-const hrBusinessTeam = [
   {
     name: "Mrs. Manisha Gupta",
     role: "Chief General Manager – HR / Business Development",
     description: "MBA in HR with over 15 years of professional experience. Profound knowledge of HR management with MNC exposure.",
   },
   {
-    name: "Mr. Raunak Gupta",
-    role: "IT Consultant",
-    description: "Technology expert handling IT infrastructure and digital solutions for the organization.",
+    name: "Mr. Abhishek AK Gupta",
+    role: "General Manager – Projects",
+    description: "B.Tech in Civil Engineering with 10 years in Highway sector. Experience with MoRT&H and Externally Aided Projects from World Bank, ADB.",
   },
   {
+    name: "Mr. Ashish Gupta",
+    role: "Deputy General Manager",
+    description: "B.Tech in Civil Engineering with over 10 years in Highway Engineering. Expert in pavement quality standards and materials.",
+  },
+];
+
+const hrBusinessTeam = [
+  {
     name: "Mr. Rohit Solanki",
-    role: "Manager – HR / Business Development",
+    role: "Administrator",
     description: "Experienced professional in HR operations and business development activities.",
   },
   {
+    name: "Mr. Harinder",
+    role: "Administrator",
+    description: "B.Tech in Civil Engineering handling Business Development including bid preparation and coordination with HR for resource mobilization.",
+  },
+  {
     name: "Ms. Dhairya Gupta",
-    role: "Manager – HR / Business Development",
+    role: "Manager – National and International Client",
     description: "Skilled in human resources and business development with focus on organizational growth.",
   },
   {
