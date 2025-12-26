@@ -37,12 +37,17 @@ const seniorManagement = [
     description: "MBA in HR with over 15 years of professional experience. Profound knowledge of HR management with MNC exposure.",
   },
   {
-    name: "Mr. Abhishek AK Gupta",
+    name: "Mr. Abhishek",
     role: "General Manager – Projects",
     description: "B.Tech in Civil Engineering with 10 years in Highway sector. Experience with MoRT&H and Externally Aided Projects from World Bank, ADB.",
   },
   {
-    name: "Mr. Ashish Gupta",
+    name: "Mr. A. K. Gupta",
+    role: "General Manager – Projects",
+    description: "M.Tech in Transportation Engineering with 12 years of highway sector experience. Expert in contract execution and quantity surveying.",
+  },
+  {
+    name: "Mr. Ashish Agarwal",
     role: "Deputy General Manager",
     description: "B.Tech in Civil Engineering with over 10 years in Highway Engineering. Expert in pavement quality standards and materials.",
   },
