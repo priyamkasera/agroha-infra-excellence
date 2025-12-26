@@ -7,9 +7,6 @@ import jhunjhunu3 from "@/assets/jhunjhunu-3.png";
 import jhunjhunu4 from "@/assets/jhunjhunu-4.png";
 import jhunjhunu5 from "@/assets/jhunjhunu-5.png";
 import jhunjhunu6 from "@/assets/jhunjhunu-6.png";
-import jhunjhunu7 from "@/assets/jhunjhunu-7.png";
-import jhunjhunu8 from "@/assets/jhunjhunu-8.png";
-import jhunjhunu9 from "@/assets/jhunjhunu-9.png";
 import {
   Dialog,
   DialogContent,
@@ -20,21 +17,11 @@ import {
 
 const projects = [
   {
-    images: [jhunjhunu7, jhunjhunu8, jhunjhunu9, jhunjhunu1, jhunjhunu2, jhunjhunu3, jhunjhunu4, jhunjhunu5, jhunjhunu6],
+    images: [jhunjhunu1, jhunjhunu2, jhunjhunu3, jhunjhunu4, jhunjhunu5, jhunjhunu6],
     title: "Jhunjhunu to Rajgarh, Neem Ka Thana to Khetri",
     location: "Rajasthan",
     category: "Highway Construction",
     client: "Rajasthan PWD",
-    partners: [
-      "Lion Engineering Consultants Pvt. Ltd",
-      "Theme Engineering Services Pvt. Ltd.",
-      "Renardet S.A.",
-      "Geo Design & Research Pvt. Ltd.",
-      "TPF GETINSA EUROESTUDIOS",
-      "MARS CONSULTANCY PVT LTD",
-      "ISAN Corporation"
-    ],
-    sectors: ["Highways", "Railways", "Airports", "Irrigation & Water Resources", "Environmental Engineering", "Urban Infrastructure", "Project Management Consultancy"],
     fullDescription: `Independent Engineer Services for Operation/Maintenance of:
 
 (i) Neem Ka Thana – Khetri Section of SH-13 from km 55+300 (at Junction with SH-43 B - Village Sirohi) to km 102+450 (at Junction with NH 311 at Jasrapur Mod near Khetri), total length 45.850 km
@@ -218,30 +205,6 @@ export const ProjectsSection = () => {
                 <span className="font-medium text-foreground">Client:</span>
                 <span className="text-muted-foreground">{selectedProject?.client}</span>
               </div>
-              {selectedProject?.partners && (
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">Partners</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.partners.map((partner) => (
-                      <span key={partner} className="px-2 py-1 bg-muted text-muted-foreground text-xs rounded">
-                        {partner}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-              {selectedProject?.sectors && (
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">Sectors</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.sectors.map((sector) => (
-                      <span key={sector} className="px-2 py-1 bg-gold/20 text-gold text-xs rounded">
-                        {sector}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         </DialogContent>
