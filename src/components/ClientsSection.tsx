@@ -1,23 +1,39 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-const clients = [
+// Government Clients
+const governmentClients = [
   { name: "Ministry of Road Transport & Highways", shortName: "MoRTH" },
   { name: "National Highways Authority of India", shortName: "NHAI" },
   { name: "State Public Works Department", shortName: "PWD" },
   { name: "Indian Railways", shortName: "IR" },
-  { name: "Metro Rail Corporations", shortName: "Metro" },
   { name: "Airports Authority of India", shortName: "AAI" },
-  { name: "RITES Limited", shortName: "RITES" },
-  { name: "IRCON International", shortName: "IRCON" },
-  { name: "NHIDCL", shortName: "NHIDCL" },
-  { name: "WAPCOS Limited", shortName: "WAPCOS" },
-  { name: "NBCC India Limited", shortName: "NBCC" },
-  { name: "Delhi Metro Rail Corporation", shortName: "DMRC" },
+];
+
+// PSU Clients
+const psuClients = [
+  { name: "RITES Ltd. – Rail India Technical and Economic Service Limited", shortName: "RITES" },
+  { name: "IRCON International Ltd. – Indian Railway Construction International Limited", shortName: "IRCON" },
+  { name: "NHIDCL – National Highways & Infrastructure Development Corporation Limited", shortName: "NHIDCL" },
+  { name: "WAPCOS Ltd. – Water and Power Consultancy Services Limited", shortName: "WAPCOS" },
+  { name: "NBCC – National Buildings Construction Corporation Limited", shortName: "NBCC" },
+  { name: "DMRC – Delhi Metro Rail Corporation Limited", shortName: "DMRC" },
+];
+
+// International Clients
+const internationalClients = [
   { name: "World Bank", shortName: "WB" },
   { name: "Asian Development Bank", shortName: "ADB" },
-  { name: "JICA Japan", shortName: "JICA" },
+  { name: "Japan International Cooperation Agency", shortName: "JICA" },
+  { name: "African Development Bank", shortName: "AfDB" },
+  { name: "New Development Bank (BRICS)", shortName: "NDB" },
+  { name: "United Nations Development Programme", shortName: "UNDP" },
+  { name: "KfW Development Bank (Germany)", shortName: "KfW" },
+  { name: "Agence Française de Développement", shortName: "AFD" },
 ];
+
+// Combined clients for slider
+const clients = [...governmentClients, ...psuClients, ...internationalClients];
 
 export const ClientsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
