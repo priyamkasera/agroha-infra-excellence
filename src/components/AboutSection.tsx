@@ -97,10 +97,19 @@ export const AboutSection = () => {
                 className="w-full max-w-md object-contain"
               />
             </div>
-            <div className="text-center mt-6">
+            <div className="text-center mt-6 max-w-md">
               <h3 className="text-2xl font-bold text-foreground">Mr. Suresh Gupta</h3>
-              <p className="text-gold font-medium">Founder & Chairman</p>
-              <p className="text-muted-foreground text-sm mt-2 max-w-md italic">
+              <p className="text-gold font-medium mb-3">Founder & Chairman</p>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-3">
+                A visionary leader with over 30 years of experience in civil engineering and infrastructure development. 
+                Mr. Suresh Gupta has been instrumental in shaping India's infrastructure landscape through his expertise 
+                in highway engineering, bridge design, and project management.
+              </p>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-3">
+                Under his leadership, AICEPL has successfully delivered numerous landmark projects across India, 
+                working with prestigious organizations including NHAI, MoRTH, and various state PWDs.
+              </p>
+              <p className="text-foreground text-sm italic border-l-2 border-gold pl-3">
                 "Our commitment to quality and client satisfaction has been the cornerstone of Agroha's success."
               </p>
             </div>
