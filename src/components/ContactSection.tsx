@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, Paperclip, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 
 const contactInfo = [
@@ -29,6 +29,8 @@ const contactInfo = [
 
 export const ContactSection = () => {
   const { toast } = useToast();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [attachedFile, setAttachedFile] = useState<File | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -37,11 +39,34 @@ export const ContactSection = () => {
     message: "",
   });
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (file.size > 10 * 1024 * 1024) {
+        toast({
+          title: "File too large",
+          description: "Please select a file smaller than 10MB",
+          variant: "destructive",
+        });
+        return;
+      }
+      setAttachedFile(file);
+    }
+  };
+
+  const removeFile = () => {
+    setAttachedFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     // Format message for WhatsApp
-    const whatsappMessage = `*New Contact Form Message*%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Phone:* ${formData.phone || 'Not provided'}%0A*Subject:* ${formData.subject}%0A%0A*Message:*%0A${formData.message}`;
+    const fileNote = attachedFile ? `%0A%0A*Attachment:* ${encodeURIComponent(attachedFile.name)} (Please request via email)` : '';
+    const whatsappMessage = `*New Contact Form Message*%0A%0A*Name:* ${encodeURIComponent(formData.name)}%0A*Email:* ${encodeURIComponent(formData.email)}%0A*Phone:* ${encodeURIComponent(formData.phone || 'Not provided')}%0A*Subject:* ${encodeURIComponent(formData.subject)}%0A%0A*Message:*%0A${encodeURIComponent(formData.message)}${fileNote}`;
     
     // Open WhatsApp with pre-filled message
     const whatsappUrl = `https://wa.me/919313547809?text=${whatsappMessage}`;
@@ -49,9 +74,15 @@ export const ContactSection = () => {
     
     toast({
       title: "Opening WhatsApp",
-      description: "Complete sending your message on WhatsApp.",
+      description: attachedFile 
+        ? "Complete sending your message on WhatsApp. Please email the attachment separately." 
+        : "Complete sending your message on WhatsApp.",
     });
     setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+    setAttachedFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
   };
 
   return (
@@ -194,6 +225,45 @@ export const ContactSection = () => {
                   className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-colors resize-none"
                   placeholder="Tell us about your project..."
                 />
+              </div>
+
+              {/* File Attachment */}
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Attach File (Optional)
+                </label>
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  onChange={handleFileChange}
+                  className="hidden"
+                  accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xlsx,.xls"
+                />
+                {!attachedFile ? (
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="flex items-center gap-2 px-4 py-3 rounded-lg border border-dashed border-border bg-background text-muted-foreground hover:border-gold hover:text-gold transition-colors"
+                  >
+                    <Paperclip className="h-5 w-5" />
+                    <span>Click to attach a file (PDF, DOC, Images - Max 10MB)</span>
+                  </button>
+                ) : (
+                  <div className="flex items-center gap-3 px-4 py-3 rounded-lg border border-gold/50 bg-gold/5">
+                    <Paperclip className="h-5 w-5 text-gold" />
+                    <span className="text-foreground flex-1 truncate">{attachedFile.name}</span>
+                    <button
+                      type="button"
+                      onClick={removeFile}
+                      className="p-1 hover:bg-destructive/10 rounded-full transition-colors"
+                    >
+                      <X className="h-4 w-4 text-destructive" />
+                    </button>
+                  </div>
+                )}
+                <p className="text-xs text-muted-foreground mt-2">
+                  Note: File will be mentioned in WhatsApp. Please email the file to info@agrohainfra.com
+                </p>
               </div>
 
               <Button type="submit" variant="gold" size="lg" className="w-full sm:w-auto">
