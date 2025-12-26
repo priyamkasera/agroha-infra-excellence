@@ -1,51 +1,69 @@
 import { motion } from "framer-motion";
 import { Building2, FileSearch, FileText, Compass, Search, HardHat, FileCheck, TrainTrack, Mountain } from "lucide-react";
+import feasibilityImg from "@/assets/services/feasibility.jpg";
+import dprImg from "@/assets/services/dpr.jpg";
+import designImg from "@/assets/services/design.jpg";
+import surveyImg from "@/assets/services/survey.jpg";
+import pmcImg from "@/assets/services/pmc.jpg";
+import supervisionImg from "@/assets/services/supervision.jpg";
+import tenderingImg from "@/assets/services/tendering.jpg";
+import metroImg from "@/assets/services/metro.jpg";
+import tunnelImg from "@/assets/services/tunnel.jpg";
 
 const services = [
   {
     icon: FileSearch,
     title: "Feasibility Studies",
     description: "Comprehensive feasibility analysis and viability assessments for infrastructure projects.",
+    image: feasibilityImg,
   },
   {
     icon: FileText,
     title: "DPR Preparation",
     description: "Detailed Project Report preparation with thorough technical and financial analysis.",
+    image: dprImg,
   },
   {
     icon: Compass,
     title: "Engineering Design",
     description: "Innovative engineering design solutions for highways, bridges, tunnels, and metro systems.",
+    image: designImg,
   },
   {
     icon: Search,
     title: "Survey & Investigation",
     description: "Geotechnical, topographical, and environmental surveys with advanced investigation techniques.",
+    image: surveyImg,
   },
   {
     icon: HardHat,
     title: "Project Management Consultancy",
     description: "End-to-end project management services ensuring timely delivery and cost optimization.",
+    image: pmcImg,
   },
   {
     icon: Building2,
     title: "Construction Supervision",
     description: "Quality assurance and construction supervision to ensure projects meet highest standards.",
+    image: supervisionImg,
   },
   {
     icon: FileCheck,
     title: "Tendering & Contract Services",
     description: "Complete tendering support and contract management for infrastructure projects.",
+    image: tenderingImg,
   },
   {
     icon: TrainTrack,
     title: "Metro Rail",
     description: "Specialized consultancy for metro rail infrastructure, stations, and urban transit systems.",
+    image: metroImg,
   },
   {
     icon: Mountain,
     title: "Tunnel Engineering",
     description: "Expert tunnel design and engineering for highways, railways, and underground infrastructure.",
+    image: tunnelImg,
   },
 ];
 
@@ -96,21 +114,34 @@ export const ServicesSection = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {services.map((service, index) => (
+          {services.map((service) => (
             <motion.div
               key={service.title}
               variants={itemVariants}
-              className="group bg-card rounded-xl p-8 shadow-card hover:shadow-gold transition-all duration-500 border border-border hover:border-gold/30"
+              className="group relative rounded-xl overflow-hidden shadow-card hover:shadow-gold transition-all duration-500 border border-border hover:border-gold/30"
             >
-              <div className="w-16 h-16 bg-gradient-hero rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <service.icon className="h-8 w-8 text-gold" />
+              {/* Background Image */}
+              <div className="absolute inset-0">
+                <img 
+                  src={service.image} 
+                  alt={service.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/90 to-background/60" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-gold transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {service.description}
-              </p>
+              
+              {/* Content */}
+              <div className="relative p-8 min-h-[280px] flex flex-col justify-end">
+                <div className="w-16 h-16 bg-gold/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-gold/30 transition-all duration-300">
+                  <service.icon className="h-8 w-8 text-gold" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-gold transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
             </motion.div>
           ))}
         </motion.div>
