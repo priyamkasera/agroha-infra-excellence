@@ -9,7 +9,7 @@ const leadershipTeam = [
     name: "Mr. Suresh Gupta",
     role: "Chairman & Founder",
     description: "Visionary leader and founder of Agroha Infrastructure with decades of experience in infrastructure development across India.",
-    images: [chairmanFormal, chairmanProfessional],
+    images: [chairmanFormal],
   },
   {
     name: "Mr. Mukesh Gupta",
