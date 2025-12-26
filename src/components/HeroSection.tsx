@@ -181,14 +181,15 @@ export const HeroSection = () => {
           {stats.map((stat, index) => (
             <div
               key={stat.label}
-              className="flex items-center gap-4 bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-lg p-4"
+              className="flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-4"
+              style={{ isolation: 'isolate' }}
             >
-              <div className="w-12 h-12 bg-gold/20 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
                 <stat.icon className="h-6 w-6 text-gold" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-primary-foreground">{stat.value}</div>
-                <div className="text-sm text-primary-foreground/70">{stat.label}</div>
+                <div className="text-2xl font-bold text-white">{stat.value}</div>
+                <div className="text-sm text-white/70">{stat.label}</div>
               </div>
             </div>
           ))}
