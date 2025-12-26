@@ -1,14 +1,22 @@
 import { motion } from "framer-motion";
-import { Handshake } from "lucide-react";
+
+// Import partner logos
+import lionEngineeringLogo from "@/assets/partners/lion-engineering-logo.png";
+import themeEngineeringLogo from "@/assets/partners/theme-engineering-logo.png";
+import renardetLogo from "@/assets/partners/renardet-logo.png";
+import geoDesignLogo from "@/assets/partners/geo-design-logo.png";
+import tpfGetinsaLogo from "@/assets/partners/tpf-getinsa-logo.png";
+import marsConsultancyLogo from "@/assets/partners/mars-consultancy-logo.png";
+import isanCorporationLogo from "@/assets/partners/isan-corporation-logo.png";
 
 const partners = [
-  "Lion Engineering Consultants Pvt. Ltd.",
-  "Theme Engineering Services Pvt. Ltd.",
-  "Renardet S.A.",
-  "Geo Design & Research Pvt. Ltd.",
-  "TPF GETINSA EUROESTUDIOS",
-  "MARS Consultancy Pvt. Ltd.",
-  "ISAN Corporation",
+  { name: "Lion Engineering Consultants Pvt. Ltd.", logo: lionEngineeringLogo },
+  { name: "Theme Engineering Services Pvt. Ltd.", logo: themeEngineeringLogo },
+  { name: "Renardet S.A.", logo: renardetLogo },
+  { name: "Geo Design & Research Pvt. Ltd.", logo: geoDesignLogo },
+  { name: "TPF GETINSA EUROESTUDIOS", logo: tpfGetinsaLogo },
+  { name: "MARS Consultancy Pvt. Ltd.", logo: marsConsultancyLogo },
+  { name: "ISAN Corporation", logo: isanCorporationLogo },
 ];
 
 const containerVariants = {
@@ -60,15 +68,19 @@ export const PartnersSection = () => {
         >
           {partners.map((partner) => (
             <motion.div
-              key={partner}
+              key={partner.name}
               variants={itemVariants}
-              className="group bg-card rounded-xl p-6 shadow-card hover:shadow-gold transition-all duration-500 border border-border hover:border-gold/30 flex items-center gap-4"
+              className="group bg-white rounded-xl p-6 shadow-card hover:shadow-gold transition-all duration-500 border border-border hover:border-gold/30 flex flex-col items-center gap-4"
             >
-              <div className="w-12 h-12 bg-gradient-hero rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                <Handshake className="h-6 w-6 text-gold" />
+              <div className="w-24 h-24 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                <img 
+                  src={partner.logo} 
+                  alt={`${partner.name} logo`}
+                  className="max-w-full max-h-full object-contain"
+                />
               </div>
-              <span className="text-foreground font-medium group-hover:text-gold transition-colors">
-                {partner}
+              <span className="text-foreground font-medium text-center text-sm group-hover:text-gold transition-colors">
+                {partner.name}
               </span>
             </motion.div>
           ))}
