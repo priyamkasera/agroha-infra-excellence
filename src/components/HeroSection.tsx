@@ -101,7 +101,7 @@ export const HeroSection = () => {
       </button>
 
       {/* Slide Indicators */}
-      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
         {slides.map((_, index) => (
           <button
             key={index}
@@ -109,7 +109,7 @@ export const HeroSection = () => {
             className={`w-3 h-3 rounded-full transition-all ${
               currentSlide === index
                 ? "bg-gold w-8"
-                : "bg-primary-foreground/40 hover:bg-primary-foreground/60"
+                : "bg-white/40 hover:bg-white/60"
             }`}
           />
         ))}
