@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Mail, Briefcase, Users, GraduationCap, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import hiringLogo from "@/assets/hiring-logo.png";
 
 const openPositions = [
   {
@@ -40,6 +41,11 @@ export const HiringSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
+          <img 
+            src={hiringLogo} 
+            alt="Join Our Team" 
+            className="w-20 h-20 mx-auto mb-4 object-contain"
+          />
           <span className="text-primary font-semibold tracking-wider uppercase text-sm">
             Join Our Team
           </span>
