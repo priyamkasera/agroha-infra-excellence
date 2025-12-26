@@ -1,54 +1,39 @@
 import { motion } from "framer-motion";
-import { Building, Landmark, Globe } from "lucide-react";
+import { useEffect, useState } from "react";
 
-const governmentClients = [
-  "Ministry of Road Transport & Highways (MoRTH)",
-  "National Highways Authority of India (NHAI)",
-  "State Public Works Department (PWD)",
-  "Indian Railways",
-  "Metro Rail Corporations",
-  "Airports Authority of India (AAI)",
-  "State Irrigation Departments",
-  "Water Resources Department (WRD)",
-  "Urban Development Authorities",
-  "Municipal Corporations",
-  "Smart City SPVs",
+const clients = [
+  { name: "Ministry of Road Transport & Highways", shortName: "MoRTH" },
+  { name: "National Highways Authority of India", shortName: "NHAI" },
+  { name: "State Public Works Department", shortName: "PWD" },
+  { name: "Indian Railways", shortName: "IR" },
+  { name: "Metro Rail Corporations", shortName: "Metro" },
+  { name: "Airports Authority of India", shortName: "AAI" },
+  { name: "RITES Limited", shortName: "RITES" },
+  { name: "IRCON International", shortName: "IRCON" },
+  { name: "NHIDCL", shortName: "NHIDCL" },
+  { name: "WAPCOS Limited", shortName: "WAPCOS" },
+  { name: "NBCC India Limited", shortName: "NBCC" },
+  { name: "Delhi Metro Rail Corporation", shortName: "DMRC" },
+  { name: "World Bank", shortName: "WB" },
+  { name: "Asian Development Bank", shortName: "ADB" },
+  { name: "JICA Japan", shortName: "JICA" },
 ];
-
-const psus = [
-  "RITES Ltd. – Rail India Technical and Economic Service Limited",
-  "IRCON International Ltd. – Indian Railway Construction International Limited",
-  "NHIDCL – National Highways & Infrastructure Development Corporation Limited",
-  "WAPCOS Ltd. – Water and Power Consultancy Services Limited",
-  "NBCC – National Buildings Construction Corporation Limited",
-  "DMRC – Delhi Metro Rail Corporation Limited",
-];
-
-const fundingAgencies = [
-  "World Bank",
-  "Asian Development Bank (ADB)",
-  "JICA – Japan International Cooperation Agency",
-  "State / Central Govt Funded Projects",
-];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.05,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0 },
-};
 
 export const ClientsSection = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % clients.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Create a duplicated array for seamless infinite scroll
+  const duplicatedClients = [...clients, ...clients];
+
   return (
-    <section id="clients" className="section-padding bg-navy-dark">
+    <section id="clients" className="section-padding bg-navy-dark overflow-hidden">
       <div className="container-custom">
         {/* Section Header */}
         <motion.div
@@ -56,13 +41,13 @@ export const ClientsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="text-center max-w-2xl mx-auto mb-12"
         >
           <span className="inline-block px-4 py-2 bg-gold/20 text-gold text-sm font-semibold rounded-full mb-4">
             OUR CLIENTS
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-            Trusted by Leading Organizations
+            Trusted by <span className="text-gold">Government Organizations</span>
           </h2>
           <p className="text-primary-foreground/70 text-lg">
             We are proud to serve government bodies, public sector undertakings, 
@@ -70,107 +55,81 @@ export const ClientsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Government Clients */}
+        {/* Infinite Logo Slider */}
+        <div className="relative">
+          {/* Gradient Overlays */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-navy-dark to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-navy-dark to-transparent z-10" />
+          
+          {/* Sliding Container */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-card/50 backdrop-blur-sm rounded-xl p-8 border border-border"
+            className="flex gap-8 py-8"
+            animate={{
+              x: [0, -50 * clients.length],
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 30,
+                ease: "linear",
+              },
+            }}
           >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-hero rounded-lg flex items-center justify-center">
-                <Landmark className="h-6 w-6 text-gold" />
+            {duplicatedClients.map((client, index) => (
+              <div
+                key={`${client.shortName}-${index}`}
+                className="flex-shrink-0 w-40 h-24 md:w-48 md:h-28 bg-card/30 backdrop-blur-sm rounded-xl border border-border/50 flex flex-col items-center justify-center p-4 hover:border-gold/50 hover:bg-card/50 transition-all duration-300"
+              >
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-hero rounded-full flex items-center justify-center mb-2">
+                  <span className="text-gold font-bold text-sm md:text-base">
+                    {client.shortName.slice(0, 2)}
+                  </span>
+                </div>
+                <span className="text-primary-foreground/80 text-xs md:text-sm text-center font-medium line-clamp-2">
+                  {client.shortName}
+                </span>
               </div>
-              <h3 className="text-xl font-bold text-primary-foreground">Government Clients</h3>
-            </div>
-            <motion.ul
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-3"
-            >
-              {governmentClients.map((client) => (
-                <motion.li
-                  key={client}
-                  variants={itemVariants}
-                  className="text-primary-foreground/80 text-sm flex items-start gap-2"
-                >
-                  <span className="w-1.5 h-1.5 bg-gold rounded-full mt-2 flex-shrink-0" />
-                  {client}
-                </motion.li>
-              ))}
-            </motion.ul>
+            ))}
           </motion.div>
+        </div>
 
-          {/* PSUs */}
+        {/* Second Row - Reverse Direction */}
+        <div className="relative mt-4">
+          {/* Gradient Overlays */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-navy-dark to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-navy-dark to-transparent z-10" />
+          
+          {/* Sliding Container - Reverse */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="bg-card/50 backdrop-blur-sm rounded-xl p-8 border border-border"
+            className="flex gap-8 py-8"
+            animate={{
+              x: [-50 * clients.length, 0],
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 35,
+                ease: "linear",
+              },
+            }}
           >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-hero rounded-lg flex items-center justify-center">
-                <Building className="h-6 w-6 text-gold" />
+            {duplicatedClients.map((client, index) => (
+              <div
+                key={`${client.shortName}-reverse-${index}`}
+                className="flex-shrink-0 w-40 h-24 md:w-48 md:h-28 bg-card/30 backdrop-blur-sm rounded-xl border border-border/50 flex flex-col items-center justify-center p-4 hover:border-gold/50 hover:bg-card/50 transition-all duration-300"
+              >
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-hero rounded-full flex items-center justify-center mb-2">
+                  <span className="text-gold font-bold text-sm md:text-base">
+                    {client.shortName.slice(0, 2)}
+                  </span>
+                </div>
+                <span className="text-primary-foreground/80 text-xs md:text-sm text-center font-medium line-clamp-2">
+                  {client.shortName}
+                </span>
               </div>
-              <h3 className="text-xl font-bold text-primary-foreground">Public Sector Undertakings</h3>
-            </div>
-            <motion.ul
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-3"
-            >
-              {psus.map((psu) => (
-                <motion.li
-                  key={psu}
-                  variants={itemVariants}
-                  className="text-primary-foreground/80 text-sm flex items-start gap-2"
-                >
-                  <span className="w-1.5 h-1.5 bg-gold rounded-full mt-2 flex-shrink-0" />
-                  {psu}
-                </motion.li>
-              ))}
-            </motion.ul>
-          </motion.div>
-
-          {/* International / Funding Agencies */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-card/50 backdrop-blur-sm rounded-xl p-8 border border-border"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-hero rounded-lg flex items-center justify-center">
-                <Globe className="h-6 w-6 text-gold" />
-              </div>
-              <h3 className="text-xl font-bold text-primary-foreground">International / Funding Agencies</h3>
-            </div>
-            <motion.ul
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-3"
-            >
-              {fundingAgencies.map((agency) => (
-                <motion.li
-                  key={agency}
-                  variants={itemVariants}
-                  className="text-primary-foreground/80 text-sm flex items-start gap-2"
-                >
-                  <span className="w-1.5 h-1.5 bg-gold rounded-full mt-2 flex-shrink-0" />
-                  {agency}
-                </motion.li>
-              ))}
-            </motion.ul>
+            ))}
           </motion.div>
         </div>
       </div>
