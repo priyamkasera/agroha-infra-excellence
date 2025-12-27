@@ -53,7 +53,7 @@ export const CultureSection = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-secondary/30 to-background overflow-hidden">
+    <section id="culture" className="py-20 bg-gradient-to-b from-secondary/30 to-background overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
