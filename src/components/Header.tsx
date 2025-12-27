@@ -7,9 +7,10 @@ import agrohaLogo from "@/assets/agroha-logo.jpg";
 const navItems = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
   { name: "Projects", href: "#projects" },
-  { name: "Careers", href: "#careers" },
+  { name: "Services", href: "#services" },
+  { name: "Celebration", href: "#culture" },
+  { name: "Career", href: "#careers" },
   { name: "Contact", href: "#contact" },
 ];
 
