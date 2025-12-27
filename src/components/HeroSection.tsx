@@ -46,7 +46,7 @@ export const HeroSection = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 8000);
     return () => clearInterval(timer);
   }, []);
 
@@ -71,7 +71,7 @@ export const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 1.5 }}
           className="absolute inset-0"
         >
           <img
@@ -134,7 +134,7 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 1.2 }}
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6">
                 {slides[currentSlide].title}
