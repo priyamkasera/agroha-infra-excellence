@@ -22,7 +22,7 @@ const slides = [
   },
   {
     image: heroSlide3,
-    title: "Pioneering",
+    title: "Excellence in",
     highlight: "Tunnel Engineering",
     description: "Advanced tunnel boring and underground infrastructure development for metro rail and highway projects.",
   },
