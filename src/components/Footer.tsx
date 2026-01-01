@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin, Linkedin, Instagram, Facebook } from "lucide-react";
+import agrohaLogo from "@/assets/agroha-logo.jpg";
 
 const quickLinks = [
   { name: "About Us", href: "#about" },
@@ -54,6 +55,11 @@ export const Footer = () => {
                   <social.icon className="h-5 w-5" />
                 </a>
               ))}
+              <img 
+                src={agrohaLogo} 
+                alt="Agroha Infrastructure Logo" 
+                className="w-10 h-10 rounded-lg object-cover"
+              />
             </div>
           </div>
 
