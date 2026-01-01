@@ -31,9 +31,11 @@ export const Footer = () => {
           <div>
             <div className="flex items-center gap-3 mb-6">
               <div className="relative">
-                <div className="w-10 h-10 bg-gold rounded-lg flex items-center justify-center">
-                  <span className="text-navy-dark font-bold text-lg">A</span>
-                </div>
+                <img 
+                  src={agrohaLogo} 
+                  alt="Agroha Logo" 
+                  className="w-10 h-10 rounded-lg object-cover"
+                />
               </div>
               <div>
                 <h3 className="text-lg font-bold">AGROHA</h3>
