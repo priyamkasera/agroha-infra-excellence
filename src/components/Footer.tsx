@@ -130,6 +130,23 @@ export const Footer = () => {
         </div>
       </div>
 
+      {/* Centered Logo Section */}
+      <div className="border-t border-primary-foreground/10">
+        <div className="container-custom px-4 py-10">
+          <div className="flex flex-col items-center justify-center gap-4">
+            <img 
+              src={agrohaLogo} 
+              alt="Agroha Infrastructure Logo" 
+              className="w-20 h-20 rounded-xl object-cover shadow-lg"
+            />
+            <div className="text-center">
+              <h3 className="text-xl font-bold tracking-wide text-primary-foreground">AGROHA</h3>
+              <p className="text-sm text-primary-foreground/60 uppercase tracking-widest">Infrastructure Pvt. Ltd.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Bottom Bar */}
       <div className="border-t border-primary-foreground/10">
         <div className="container-custom px-4 py-6">
