@@ -28,8 +28,8 @@ const leadershipTeam = [
 const seniorManagement = [
   {
     name: "Mr. Raunak Gupta",
-    role: "IT Consultant",
-    description: "Technology expert handling IT infrastructure and digital solutions for the organization.",
+    role: "Executive Director",
+    description: "MCA graduate with expertise in technology and management. Leading strategic initiatives and digital transformation for the organization.",
   },
   {
     name: "Mrs. Manisha Gupta",
@@ -55,29 +55,29 @@ const seniorManagement = [
 
 const hrBusinessTeam = [
   {
-    name: "Mr. Rohit Solanki",
-    role: "Administrator",
-    description: "Experienced professional in HR operations and business development activities.",
-  },
-  {
     name: "Mr. Harinder",
-    role: "Administrator",
+    role: "Senior Manager",
     description: "B.Tech in Civil Engineering handling Business Development including bid preparation and coordination with HR for resource mobilization.",
   },
   {
+    name: "Mr. Bhavishya Kumar Garg",
+    role: "Technical Manager",
+    description: "B.Tech in Civil Engineering with expertise in highway design/drawings, DPRs, and Feasibility Studies.",
+  },
+  {
+    name: "Mr. Rohit Solanki",
+    role: "Manager – Admin / BD",
+    description: "Experienced professional in HR operations, administration and business development activities.",
+  },
+  {
     name: "Ms. Dhairya Gupta",
-    role: "Manager – National and International Client",
-    description: "Skilled in human resources and business development with focus on organizational growth.",
+    role: "Manager – BD",
+    description: "Skilled in business development with focus on national and international client coordination and organizational growth.",
   },
   {
     name: "Ms. Sakshi Sharma",
-    role: "Assistant Manager – Human Resources",
+    role: "Assistant Manager – HR",
     description: "HR professional managing recruitment, employee relations and administrative functions.",
-  },
-  {
-    name: "Mr. Bhavishya Kumar Garg",
-    role: "Assistant Manager",
-    description: "B.Tech in Civil Engineering with expertise in highway design/drawings, DPRs, and Feasibility Studies.",
   },
 ];
 
