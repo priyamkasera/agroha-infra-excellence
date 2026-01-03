@@ -7,6 +7,7 @@ import jaisalmer2 from "@/assets/culture/jaisalmer-2.jpg";
 import jaisalmer3 from "@/assets/culture/jaisalmer-3.jpg";
 import jaisalmer4 from "@/assets/culture/jaisalmer-4.jpg";
 import jaisalmer5 from "@/assets/culture/jaisalmer-5.jpg";
+import agrohaLogo from "@/assets/agroha-logo.jpg";
 
 const cultureImages = [
   { src: jaisalmer1, caption: "Desert Adventure - Jaisalmer 2025" },
@@ -63,6 +64,11 @@ export const CultureSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
+          <img 
+            src={agrohaLogo} 
+            alt="Life at Agroha" 
+            className="w-20 h-20 mx-auto mb-4 object-contain"
+          />
           <span className="text-primary font-semibold tracking-wider uppercase text-sm">
             Life at Agroha
           </span>
