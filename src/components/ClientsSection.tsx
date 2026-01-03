@@ -227,7 +227,7 @@ export const ClientsSection = () => {
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
             <h3 className="text-lg md:text-xl font-semibold text-gold whitespace-nowrap">
-              ​Funding client   
+              Multilateral Funding Agencies
             </h3>
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
           </div>

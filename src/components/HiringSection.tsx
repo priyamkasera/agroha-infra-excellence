@@ -16,8 +16,8 @@ const openPositions = [
   },
   {
     icon: GraduationCap,
-    title: "Project Managers",
-    description: "End-to-end project planning and delivery",
+    title: "Highway Engineers",
+    description: "Highway design, planning and execution",
   },
   {
     icon: Users,
@@ -28,7 +28,7 @@ const openPositions = [
 
 export const HiringSection = () => {
   const handleApply = () => {
-    window.open("https://mail.google.com/mail/?view=cm&to=HR@agrohainfra.com&su=Job%20Application", "_blank");
+    window.open("https://mail.google.com/mail/?view=cm&to=hr@agrohainfra.com&su=Job%20Application", "_blank");
   };
 
   return (
@@ -88,7 +88,7 @@ export const HiringSection = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button onClick={handleApply} className="gap-2">
               <Mail className="h-4 w-4" />
-              HR@agrohainfra.com
+              hr@agrohainfra.com
             </Button>
           </div>
         </motion.div>

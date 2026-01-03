@@ -55,13 +55,13 @@ const seniorManagement = [
 
 const hrBusinessTeam = [
   {
-    name: "Mr. Harinder",
+    name: "Mr. HK",
     role: "Senior Manager",
     description: "B.Tech in Civil Engineering handling Business Development including bid preparation and coordination with HR for resource mobilization.",
   },
   {
     name: "Mr. Bhavishya Kumar Garg",
-    role: "Technical Manager",
+    role: "Manager Technical",
     description: "B.Tech in Civil Engineering with expertise in highway design/drawings, DPRs, and Feasibility Studies.",
   },
   {
