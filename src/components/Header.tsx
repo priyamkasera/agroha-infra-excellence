@@ -1,21 +1,23 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Mail } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import agrohaLogo from "@/assets/agroha-logo.jpg";
 
 const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Services", href: "#services" },
-  { name: "Celebration", href: "#culture" },
-  { name: "Career", href: "#careers" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Projects", href: "/projects" },
+  { name: "Services", href: "/services" },
+  { name: "Celebration", href: "/celebration" },
+  { name: "Career", href: "/careers" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <>
@@ -43,29 +45,37 @@ export const Header = () => {
         <div className="container-custom px-4">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <a href="#home" className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-3">
               <img src={agrohaLogo} alt="Agroha Infrastructure Logo" className="h-20 w-auto object-contain" />
-            </a>
+            </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-8">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
-                  className="text-foreground/80 hover:text-gold font-medium transition-colors relative group"
+                  to={item.href}
+                  className={`font-medium transition-colors relative group ${
+                    location.pathname === item.href 
+                      ? "text-gold" 
+                      : "text-foreground/80 hover:text-gold"
+                  }`}
                 >
                   {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
-                </a>
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-gold transition-all duration-300 ${
+                    location.pathname === item.href ? "w-full" : "w-0 group-hover:w-full"
+                  }`}></span>
+                </Link>
               ))}
             </nav>
 
             {/* CTA Button */}
             <div className="hidden lg:block">
-              <Button variant="gold" size="lg">
-                Get Quote
-              </Button>
+              <Link to="/contact">
+                <Button variant="gold" size="lg">
+                  Get Quote
+                </Button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -89,18 +99,24 @@ export const Header = () => {
             >
               <nav className="container-custom px-4 py-4 flex flex-col gap-4">
                 {navItems.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
-                    href={item.href}
-                    className="text-foreground/80 hover:text-gold font-medium py-2 transition-colors"
+                    to={item.href}
+                    className={`font-medium py-2 transition-colors ${
+                      location.pathname === item.href 
+                        ? "text-gold" 
+                        : "text-foreground/80 hover:text-gold"
+                    }`}
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
-                <Button variant="gold" className="mt-2">
-                  Get Quote
-                </Button>
+                <Link to="/contact" onClick={() => setIsOpen(false)}>
+                  <Button variant="gold" className="mt-2 w-full">
+                    Get Quote
+                  </Button>
+                </Link>
               </nav>
             </motion.div>
           )}
