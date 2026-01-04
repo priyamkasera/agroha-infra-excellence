@@ -65,19 +65,28 @@ export const ContactSection = () => {
     e.preventDefault();
     
     // Format message for WhatsApp
-    const fileNote = attachedFile ? `%0A%0A*Attachment:* ${encodeURIComponent(attachedFile.name)} (Please request via email)` : '';
+    const fileNote = attachedFile 
+      ? `%0A%0A📎 *File to attach:* ${encodeURIComponent(attachedFile.name)}%0A(Please use the attachment button in WhatsApp to send this file)` 
+      : '';
     const whatsappMessage = `*New Contact Form Message*%0A%0A*Name:* ${encodeURIComponent(formData.name)}%0A*Email:* ${encodeURIComponent(formData.email)}%0A*Phone:* ${encodeURIComponent(formData.phone || 'Not provided')}%0A*Subject:* ${encodeURIComponent(formData.subject)}%0A%0A*Message:*%0A${encodeURIComponent(formData.message)}${fileNote}`;
     
     // Open WhatsApp with pre-filled message
     const whatsappUrl = `https://wa.me/919313547809?text=${whatsappMessage}`;
     window.open(whatsappUrl, '_blank');
     
-    toast({
-      title: "Opening WhatsApp",
-      description: attachedFile 
-        ? "Complete sending your message on WhatsApp. Please email the attachment separately." 
-        : "Complete sending your message on WhatsApp.",
-    });
+    if (attachedFile) {
+      toast({
+        title: "WhatsApp Opened",
+        description: "Send the text message first, then tap the 📎 button in WhatsApp to attach your file manually.",
+        duration: 8000,
+      });
+    } else {
+      toast({
+        title: "Opening WhatsApp",
+        description: "Complete sending your message on WhatsApp.",
+      });
+    }
+    
     setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
     setAttachedFile(null);
     if (fileInputRef.current) {
@@ -262,7 +271,7 @@ export const ContactSection = () => {
                   </div>
                 )}
                 <p className="text-xs text-muted-foreground mt-2">
-                  Note: File will be mentioned in WhatsApp. Please email the file to info@agrohainfra.com
+                  Note: WhatsApp doesn't support auto-attach. After sending the message, use the 📎 button in WhatsApp to attach your file.
                 </p>
               </div>
 
