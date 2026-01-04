@@ -157,6 +157,9 @@ export const Footer = () => {
               <a href="#" className="hover:text-gold transition-colors">Terms of Service</a>
             </div>
           </div>
+          <div className="text-center mt-4 text-sm text-primary-foreground/50">
+            Designed by <a href="mailto:priyamkaseraa@gmail.com" className="hover:text-gold transition-colors">priyamkaseraa@gmail.com</a>
+          </div>
         </div>
       </div>
     </footer>
