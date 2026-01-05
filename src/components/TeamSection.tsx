@@ -79,6 +79,11 @@ const hrBusinessTeam = [
     role: "Assistant Manager – HR",
     description: "HR professional managing recruitment, employee relations and administrative functions.",
   },
+  {
+    name: "Mr. Ankit Gupta",
+    role: "Accountant",
+    description: "Finance professional handling accounting operations, financial reporting and budget management.",
+  },
 ];
 
 export const TeamSection = () => {
