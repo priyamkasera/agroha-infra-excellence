@@ -5,8 +5,10 @@ import { Button } from "@/components/ui/button";
 import heroVideo1 from "@/assets/hero-video-1.mp4";
 import heroVideo2 from "@/assets/hero-video-2.mp4";
 import heroVideo3 from "@/assets/hero-video-3.mp4";
+import heroVideo4 from "@/assets/hero-video-4.mp4";
+import heroVideo5 from "@/assets/hero-video-5.mp4";
 
-const heroVideos = [heroVideo1, heroVideo2, heroVideo3];
+const heroVideos = [heroVideo1, heroVideo2, heroVideo3, heroVideo4, heroVideo5];
 
 const heroContent = {
   title: "Building India's",
@@ -27,7 +29,7 @@ export const HeroSection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentVideoIndex((prev) => (prev + 1) % heroVideos.length);
-    }, 5000); // Switch every 5 seconds (3 videos = 15 sec total)
+    }, 3000); // Switch every 3 seconds (5 videos = 15 sec total)
 
     return () => clearInterval(interval);
   }, []);
