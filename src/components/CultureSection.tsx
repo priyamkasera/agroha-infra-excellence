@@ -7,14 +7,34 @@ import jaisalmer2 from "@/assets/culture/jaisalmer-2.jpg";
 import jaisalmer3 from "@/assets/culture/jaisalmer-3.jpg";
 import jaisalmer4 from "@/assets/culture/jaisalmer-4.jpg";
 import jaisalmer5 from "@/assets/culture/jaisalmer-5.jpg";
+import celebration1 from "@/assets/culture/celebration-1.jpg";
+import celebration2 from "@/assets/culture/celebration-2.jpg";
+import newyear1 from "@/assets/culture/newyear-1.jpg";
+import newyear2 from "@/assets/culture/newyear-2.jpg";
+import office1 from "@/assets/culture/office-1.jpg";
+import diwali1 from "@/assets/culture/diwali-1.jpg";
+import diwali2 from "@/assets/culture/diwali-2.jpg";
+import diwali3 from "@/assets/culture/diwali-3.jpg";
+import birthday1 from "@/assets/culture/birthday-1.jpg";
+import felicitation1 from "@/assets/culture/felicitation-1.jpg";
 import agrohaLogo from "@/assets/agroha-logo.jpg";
 
 const cultureImages = [
-  { src: jaisalmer1, caption: "Desert Adventure - Jaisalmer 2025" },
-  { src: jaisalmer2, caption: "Team Bonding at the Sand Dunes" },
-  { src: jaisalmer3, caption: "Exploring Jaisalmer Fort" },
-  { src: jaisalmer4, caption: "Road Trip Memories" },
-  { src: jaisalmer5, caption: "Journey Together" },
+  { src: jaisalmer1, caption: "Desert Adventure - Jaisalmer 2025", tag: "Jaisalmer Tour 2025" },
+  { src: jaisalmer2, caption: "Team Bonding at the Sand Dunes", tag: "Jaisalmer Tour 2025" },
+  { src: jaisalmer3, caption: "Exploring Jaisalmer Fort", tag: "Jaisalmer Tour 2025" },
+  { src: jaisalmer4, caption: "Road Trip Memories", tag: "Jaisalmer Tour 2025" },
+  { src: jaisalmer5, caption: "Journey Together", tag: "Jaisalmer Tour 2025" },
+  { src: celebration1, caption: "Team Birthday Celebration", tag: "Birthday Celebration" },
+  { src: celebration2, caption: "Celebrating Together", tag: "Birthday Celebration" },
+  { src: newyear1, caption: "Team Gathering - New Year 2026", tag: "New Year 2026" },
+  { src: newyear2, caption: "Happy New Year 2026", tag: "New Year 2026" },
+  { src: office1, caption: "Our Dedicated Team", tag: "Office Life" },
+  { src: diwali1, caption: "Diwali Gift Distribution", tag: "Diwali Celebration" },
+  { src: diwali2, caption: "Festive Celebrations", tag: "Diwali Celebration" },
+  { src: diwali3, caption: "Diwali Puja at Office", tag: "Diwali Celebration" },
+  { src: birthday1, caption: "Birthday Fun Moments", tag: "Birthday Celebration" },
+  { src: felicitation1, caption: "Felicitation Ceremony", tag: "Achievements" },
 ];
 
 const cultureHighlights = [
@@ -139,7 +159,7 @@ export const CultureSection = () => {
               className="absolute bottom-6 left-6 right-6"
             >
               <span className="inline-block px-4 py-2 bg-primary/90 text-primary-foreground rounded-full text-sm font-medium mb-2">
-                Jaisalmer Tour 2025
+                {cultureImages[currentIndex].tag}
               </span>
               <h3 className="text-white text-xl md:text-2xl font-semibold">
                 {cultureImages[currentIndex].caption}
