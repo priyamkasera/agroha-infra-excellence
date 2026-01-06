@@ -2,12 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight, Award, Users, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroVideo1 from "@/assets/hero-video-1.mp4";
-import heroVideo2 from "@/assets/hero-video-2.mp4";
-import heroVideo3 from "@/assets/hero-video-3.mp4";
-import heroVideo4 from "@/assets/hero-video-5.mp4";
-
-const heroVideos = [heroVideo1, heroVideo2, heroVideo3, heroVideo4];
+import heroVideo from "@/assets/hero-video-1.mp4";
 
 const heroContent = {
   title: "Building India's",
@@ -76,36 +71,22 @@ const StatCounter = ({ stat, isInView }: { stat: typeof stats[0]; isInView: bool
 };
 
 export const HeroSection = () => {
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const statsRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(statsRef, { once: false, amount: 0.5 });
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentVideoIndex((prev) => (prev + 1) % heroVideos.length);
-    }, 3750); // Switch every 3.75 seconds (4 videos = 15 sec total)
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <section id="home" className="relative min-h-[90vh] flex items-center overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0">
-        {heroVideos.map((video, index) => (
-          <video
-            key={index}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className={`absolute w-full h-full object-cover transition-opacity duration-1000 ${
-              index === currentVideoIndex ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <source src={video} type="video/mp4" />
-          </video>
-        ))}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute w-full h-full object-cover"
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-overlay"></div>
       </div>
 
