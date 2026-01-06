@@ -22,11 +22,14 @@ const stats = [
 ];
 
 // Counter hook for rolling number animation
-const useCounter = (end: number, duration: number = 2000, start: boolean = false) => {
+const useCounter = (end: number, duration: number = 2000, isInView: boolean = false) => {
   const [count, setCount] = useState(0);
   
   useEffect(() => {
-    if (!start) return;
+    if (!isInView) {
+      setCount(0); // Reset when out of view
+      return;
+    }
     
     let startTime: number | null = null;
     let animationFrame: number;
@@ -46,7 +49,7 @@ const useCounter = (end: number, duration: number = 2000, start: boolean = false
     
     animationFrame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationFrame);
-  }, [end, duration, start]);
+  }, [end, duration, isInView]);
   
   return count;
 };
@@ -75,7 +78,7 @@ const StatCounter = ({ stat, isInView }: { stat: typeof stats[0]; isInView: bool
 export const HeroSection = () => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const statsRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(statsRef, { once: true, amount: 0.5 });
+  const isInView = useInView(statsRef, { once: false, amount: 0.5 });
 
   useEffect(() => {
     const interval = setInterval(() => {
