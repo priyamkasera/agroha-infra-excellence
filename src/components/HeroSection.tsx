@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { ArrowRight, Award, Users, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroVideo1 from "@/assets/hero-video-1.mp4";
@@ -16,14 +16,66 @@ const heroContent = {
 };
 
 const stats = [
-  { icon: Building2, value: "250+", label: "Projects Completed" },
-  { icon: Users, value: "1000+", label: "Happy Clients" },
-  { icon: Award, value: "20+", label: "Years Experience" },
+  { icon: Building2, value: 250, suffix: "+", label: "Projects Completed" },
+  { icon: Users, value: 1000, suffix: "+", label: "Happy Clients" },
+  { icon: Award, value: 20, suffix: "+", label: "Years Experience" },
 ];
+
+// Counter hook for rolling number animation
+const useCounter = (end: number, duration: number = 2000, start: boolean = false) => {
+  const [count, setCount] = useState(0);
+  
+  useEffect(() => {
+    if (!start) return;
+    
+    let startTime: number | null = null;
+    let animationFrame: number;
+    
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setCount(Math.floor(easeOutQuart * end));
+      
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+    
+    animationFrame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [end, duration, start]);
+  
+  return count;
+};
+
+const StatCounter = ({ stat, isInView }: { stat: typeof stats[0]; isInView: boolean }) => {
+  const count = useCounter(stat.value, 2000, isInView);
+  
+  return (
+    <div
+      className="flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-4"
+      style={{ isolation: 'isolate' }}
+    >
+      <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
+        <stat.icon className="h-6 w-6 text-gold" />
+      </div>
+      <div>
+        <div className="text-2xl font-bold text-white">
+          {count}{stat.suffix}
+        </div>
+        <div className="text-sm text-white/70">{stat.label}</div>
+      </div>
+    </div>
+  );
+};
 
 export const HeroSection = () => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(statsRef, { once: true, amount: 0.5 });
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -111,25 +163,14 @@ export const HeroSection = () => {
 
         {/* Stats Bar */}
         <motion.div
+          ref={statsRef}
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl"
         >
           {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-4"
-              style={{ isolation: 'isolate' }}
-            >
-              <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-                <stat.icon className="h-6 w-6 text-gold" />
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-white">{stat.value}</div>
-                <div className="text-sm text-white/70">{stat.label}</div>
-              </div>
-            </div>
+            <StatCounter key={stat.label} stat={stat} isInView={isInView} />
           ))}
         </motion.div>
       </div>
