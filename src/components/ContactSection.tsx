@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock, Send, Paperclip, X } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, Paperclip, X, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
+import agrohaLogo from "@/assets/agroha-logo.jpg";
 
 const contactInfo = [
   {
@@ -116,54 +117,86 @@ export const ContactSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Contact Info Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Left Side - Reception & Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-6"
+            className="space-y-8"
           >
-            {contactInfo.map((item) => (
-              <div
-                key={item.title}
-                className="bg-card rounded-xl p-6 shadow-soft border border-border hover:border-gold/30 transition-colors"
-              >
+            {/* AI Reception Card */}
+            <div className="bg-card rounded-xl p-8 shadow-card border border-border">
+              <div className="flex items-center gap-6 mb-6">
+                <img 
+                  src={agrohaLogo} 
+                  alt="Agroha Infra Logo" 
+                  className="w-20 h-20 rounded-xl object-contain bg-background p-2 border border-border"
+                />
+                <div>
+                  <h3 className="text-xl font-bold text-foreground">Welcome to Agroha Infra</h3>
+                  <p className="text-muted-foreground text-sm">Virtual Reception Desk</p>
+                </div>
+              </div>
+              
+              <div className="bg-gradient-hero rounded-xl p-6 border border-gold/20">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-hero rounded-lg flex items-center justify-center flex-shrink-0">
-                    <item.icon className="h-6 w-6 text-gold" />
+                  <div className="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <MessageCircle className="h-6 w-6 text-gold" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-foreground mb-2">{item.title}</h4>
+                    <p className="text-foreground font-medium mb-2">How can we assist you today?</p>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      Thank you for visiting Agroha Infra Consultant Pvt. Ltd. We're here to help with your infrastructure consulting needs. Feel free to reach out via the contact form or use our details below.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Info - Horizontal Stack */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {contactInfo.map((item) => (
+                <div
+                  key={item.title}
+                  className="bg-card rounded-xl p-5 shadow-soft border border-border hover:border-gold/30 transition-colors"
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-gradient-hero rounded-lg flex items-center justify-center flex-shrink-0">
+                      <item.icon className="h-5 w-5 text-gold" />
+                    </div>
+                    <h4 className="font-bold text-foreground text-sm">{item.title}</h4>
+                  </div>
+                  <div className="pl-13">
                     {item.details.map((detail, index) => (
                       item.title === "Phone" ? (
-                        <a key={index} href={`tel:${detail.replace(/\s/g, '')}`} className="text-muted-foreground text-sm hover:text-gold transition-colors block">
+                        <a key={index} href={`tel:${detail.replace(/\s/g, '')}`} className="text-muted-foreground text-xs hover:text-gold transition-colors block">
                           {detail}
                         </a>
                       ) : item.title === "Email" ? (
-                        <a key={index} href={`mailto:${detail}`} className="text-muted-foreground text-sm hover:text-gold transition-colors block">
+                        <a key={index} href={`mailto:${detail}`} className="text-muted-foreground text-xs hover:text-gold transition-colors block">
                           {detail}
                         </a>
                       ) : (
-                        <p key={index} className="text-muted-foreground text-sm">
+                        <p key={index} className="text-muted-foreground text-xs">
                           {detail}
                         </p>
                       )
                     ))}
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </motion.div>
 
+          {/* Contact Form */}
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-2"
           >
             <form onSubmit={handleSubmit} className="bg-card rounded-xl p-8 shadow-card border border-border">
               <h3 className="text-xl font-bold text-foreground mb-6">Send us a Message</h3>
