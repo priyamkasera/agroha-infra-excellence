@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useState, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 import agrohaLogo from "@/assets/agroha-logo.jpg";
+import receptionDesk from "@/assets/reception-desk.png";
 
 const contactInfo = [
   {
@@ -128,7 +129,7 @@ export const ContactSection = () => {
           >
             {/* AI Reception Card */}
             <div className="bg-card rounded-xl p-8 shadow-card border border-border">
-              <div className="flex items-center gap-6 mb-6">
+              <div className="flex items-center gap-6 mb-4">
                 <img 
                   src={agrohaLogo} 
                   alt="Agroha Infra Logo" 
@@ -138,6 +139,15 @@ export const ContactSection = () => {
                   <h3 className="text-xl font-bold text-foreground">Welcome to Agroha Infra</h3>
                   <p className="text-muted-foreground text-sm">Virtual Reception Desk</p>
                 </div>
+              </div>
+
+              {/* Reception Photo */}
+              <div className="mb-6 rounded-xl overflow-hidden">
+                <img 
+                  src={receptionDesk} 
+                  alt="Agroha Infra Reception" 
+                  className="w-full h-48 object-cover"
+                />
               </div>
               
               <div className="bg-gradient-hero rounded-xl p-6 border border-gold/20">
