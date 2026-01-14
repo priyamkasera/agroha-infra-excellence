@@ -7,6 +7,9 @@ import jhunjhunu3 from "@/assets/jhunjhunu-3.png";
 import jhunjhunu4 from "@/assets/jhunjhunu-4.png";
 import jhunjhunu5 from "@/assets/jhunjhunu-5.png";
 import jhunjhunu6 from "@/assets/jhunjhunu-6.png";
+import jaisalmerHighway1 from "@/assets/jaisalmer-highway-1.jpg";
+import jaisalmerHighway2 from "@/assets/jaisalmer-highway-2.jpg";
+import jaisalmerHighway3 from "@/assets/jaisalmer-highway-3.jpg";
 import {
   Dialog,
   DialogContent,
@@ -16,6 +19,23 @@ import {
 } from "@/components/ui/dialog";
 
 const projects = [
+  {
+    images: [jaisalmerHighway1, jaisalmerHighway2, jaisalmerHighway3],
+    title: "Jaisalmer-Barmer & Barmer-Sanchore-Gujarat Border NH-68",
+    location: "Jaisalmer, Rajasthan",
+    category: "Highway Supervision",
+    client: "National Highways Authority of India (NHAI)",
+    fullDescription: `Supervision Consultancy (SC) Services during O&M stage of:
+
+(i) Jaisalmer-Barmer section (from Km 0.000 to 122.880 & from Km 144.500 to 153.000)
+
+(ii) Barmer-Sanchore-Gandhav-Gujarat border section (from Km 153.000 to 285.779 & from Km 291.982 to Km 297.200)
+
+Total Length: 269.377 km of NH-68 in the state of Rajasthan
+
+Project commenced: August 2025
+Regional Office: F-120, Janpath, Shyam Nagar, Jaipur-302019 (Rajasthan)`,
+  },
   {
     images: [jhunjhunu1, jhunjhunu2, jhunjhunu3, jhunjhunu4, jhunjhunu5, jhunjhunu6],
     title: "Jhunjhunu to Rajgarh, Neem Ka Thana to Khetri",
