@@ -1,11 +1,12 @@
 import { Phone, Mail, MapPin, Linkedin, Instagram, Facebook } from "lucide-react";
+import { Link } from "react-router-dom";
 import agrohaLogo from "@/assets/agroha-logo.jpg";
 
 const quickLinks = [
-  { name: "About Us", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+  { name: "About Us", href: "/about", isRoute: true },
+  { name: "Services", href: "/services", isRoute: true },
+  { name: "Projects", href: "#projects", isRoute: false },
+  { name: "Contact", href: "#contact", isRoute: false },
 ];
 
 const services = [
@@ -74,12 +75,21 @@ export const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-primary-foreground/70 hover:text-gold transition-colors"
-                  >
-                    {link.name}
-                  </a>
+                  {link.isRoute ? (
+                    <Link
+                      to={link.href}
+                      className="text-primary-foreground/70 hover:text-gold transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-primary-foreground/70 hover:text-gold transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
