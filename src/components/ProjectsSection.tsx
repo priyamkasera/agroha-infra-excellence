@@ -10,6 +10,9 @@ import jhunjhunu6 from "@/assets/jhunjhunu-6.png";
 import jaisalmerHighway1 from "@/assets/jaisalmer-highway-1.jpg";
 import jaisalmerHighway2 from "@/assets/jaisalmer-highway-2.jpg";
 import jaisalmerHighway3 from "@/assets/jaisalmer-highway-3.jpg";
+import chittorgarhHighway1 from "@/assets/chittorgarh-highway-1.jpg";
+import chittorgarhHighway2 from "@/assets/chittorgarh-highway-2.jpg";
+import chittorgarhHighway3 from "@/assets/chittorgarh-highway-3.jpg";
 import {
   Dialog,
   DialogContent,
@@ -19,6 +22,18 @@ import {
 } from "@/components/ui/dialog";
 
 const projects = [
+  {
+    images: [chittorgarhHighway1, chittorgarhHighway2, chittorgarhHighway3],
+    title: "Chittorgarh Bypass to Kota Section NH-27",
+    location: "Chittorgarh to Kota, Rajasthan",
+    category: "Independent Engineer Services",
+    client: "National Highways Authority of India (NHAI)",
+    fullDescription: `Independent Engineer Services for supervision of Chittorgarh Bypass to Kota Section (from km. 891.929 to km. 1052.429) of NH-27 in the State of Rajasthan on Tolling, Operation, Maintenance & Transfer basis.
+
+Total Length: 160.5 km of NH-27 in the State of Rajasthan
+
+Executed in Association with Lion Engineering Consultants Pvt. Ltd.`,
+  },
   {
     images: [jaisalmerHighway1, jaisalmerHighway2, jaisalmerHighway3],
     title: "Jaisalmer-Barmer & Barmer-Sanchore-Gujarat Border NH-68",
